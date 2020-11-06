@@ -4,4 +4,4 @@
 -- SELECT title, writer FROM books;
 -- SELECT * FROM books ORDER BY id ASC;
 -- SELECT * FROM books WHERE id=3;
-SELECT * FROM books ORDER BY id ASC LIMIT 0, 3;
+-- SELECT * FROM books ORDER BY id ASC LIMIT 0, 3;
