@@ -12,4 +12,7 @@
 ### - Collection 데이터의 집합
 ### - json형태의 document들이 모여 컬렉션이 된다.
 ### - Database > Collection > document
-### - DBMS --> MongoDB, PostgreSQL, OrientDB
+### - DBMS --> MongoDB, Radis, PostgreSQL, OrientDB
+
+## 3. Install
+### - bitnami.com -> wamp 
