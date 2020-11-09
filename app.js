@@ -17,7 +17,7 @@ app.listen(3000, ()=>{
 }); 
 
 //초기 설정
-app.set('view engine','pug');
+app.set('view engine', 'pug');
 app.set('views', './views');
 app.locals.pretty = true;
 
@@ -29,8 +29,20 @@ app.use(express.urlencoded({extended: false}));
 
 
 //라우터
-app.get('/book/list',(req, res) => {
-	connection.query('SELECT * FROM books', (err, r) => {
-		res.json(r);
-	})
+app.get('/book/list', (req, res) => {
+	connection.query('SELECT * FROM books', function(err, r) {
+		// res.json(r);
+		for(let v of r) {
+			v.wdate = moment(v.wdate).format('YYYY-MM-DD');
+		};
+		const pug = {
+			css:'book-list',
+			js: 'book-list',
+			title: '도서 리스트',
+			titleSub: '고전도서 리스트',
+			lists: r
+	}
+	
+		res.render('book/list', pug);
+	});
 });

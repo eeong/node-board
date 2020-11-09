@@ -1,0 +1,18 @@
+extends ../layout/lo-default.pug
+block content
+	table.table.text-center.table-hover
+		thead.thead-dark
+			tr
+				th 번호
+				th 제목
+				th 저자
+				th 발행일
+				th 내용
+			tbody
+			each v in lists
+				tr
+					td= v.id
+					td.text-left= v.title
+					td= v.writer
+					td= v.wdate
+					td.text-left= v.content

@@ -1,0 +1,41 @@
+@use 'color';
+
+html,	body {
+	color: color.$color-base;
+	font-size: 16px;
+}
+ul,li,p,div,form,h1,h2,h3,h4,h5,header,footer,section,aside,article,nav{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color:inherit;
+	&*{
+		color:inherit;
+	}
+}
+header.header-wrapper {
+	background-color: color.$color-base;
+	color: color.$color-acc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.logo {
+		padding: 1em;
+	}
+	.navi-wrapper {
+		display: flex;
+		align-items: center;
+		.navi {
+			padding: 1em;
+		}
+	}
+}
+.title-bar {
+	margin: 1em auto;
+	small {
+		color: lighten(color.$color-base, 20%) !important;
+	}
+}
