@@ -1,0 +1,10 @@
+form[name=bookForm] hr {
+  border-color: #e1e1e1;
+}
+
+.tb-write .title {
+  border-bottom: 2px solid #09a5ee;
+}
+.tb-write textarea {
+  height: 150px;
+}
