@@ -4,21 +4,32 @@ const pool = require('../modules/mysql_connect');
 const moment = require("moment");
 
 
-router.get('/list', async (req, res) => {
-	var query = 'SELECT * FROM books ORDER BY id DESC LIMIT 0, 10';
-	const connect = await pool.getConnection();
-	const r = await connect.query(query);
-	const r2 = await connect.query('SELECT * FROM books WHERE id=7');
-	connect.release();
-	for (let v of r[0]) v.wdate = moment(v.wdate).format('YYYY-MM-DD');
-	const pug = {
+router.get(['/','/list'], async (req, res, next) => {
+	let query = 'SELECT * FROM books ORDER BY id DESC LIMIT 0, 10';
+	let connect, r;
+	try {
+		connect = await pool.getConnection();
+		r = await connect.query(query);
+		for (let v of r[0]) v.wdate = moment(v.wdate).format('YYYY-MM-DD');
+		const pug = {
 		file: 'book-list',
 		title: '도서 리스트',
 		titleSub: '고전도서 리스트',
 		lists: r[0]
-}
-res.render('book/list',pug);
-});
+		}
+		res.render('book/list',pug);
+		connect.release();
+	}
+	catch(e) {
+		connect.release();
+		e.msg = 
+		`${e.code ? e.code : ""}\n
+		${e.errno ? e.errno : ""}\n
+		${e.sqlState ? e.sqlState : ""}\n
+		${e.sqlMessage ? e.sqlMessage : ""}`
+		next(e);
+	}
+	});
 
 router.get('/write', (req, res) => {
 	const pug = {

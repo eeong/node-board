@@ -1,0 +1,15 @@
+extends ../layout/lo-minimal.pug
+block style
+	link(rel="stylesheet" href="/css/error.css")
+block content
+	.wrapper.container
+		.wrap.text-center
+			div
+				.img-wrap
+					img.w-100(src= `/img/${img}.png` alt="error")
+				.code-wrap
+					h3= `ERROR: ${code}`
+			hr
+			.error-wrap= `${msg}`
+			.text-center
+				a.btn.btn-primary.mt-5(href="/") 메인페이지로 돌아가기
