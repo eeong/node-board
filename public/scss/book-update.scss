@@ -1,0 +1,17 @@
+@use 'color';
+
+form[name="bookForm"] {
+	hr {
+		border-color:lighten(color.$color-base, 75%);
+	}
+}
+
+.tb-write {
+	.title {
+		border-bottom: 2px solid opacify($color: color.$color-acc, $amount: 0.5);
+	}
+	textarea {height: 150px;}
+	.content {
+
+	}
+}

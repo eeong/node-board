@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../modules/mysql_connect');
 const moment = require("moment");
-
+const pool = require('../modules/mysql_connect');
+const { alert } = require("../modules/util");
 
 router.get(['/','/list'], async (req, res, next) => {
 	let query = 'SELECT * FROM books ORDER BY id DESC LIMIT 0, 10';
@@ -21,7 +21,7 @@ router.get(['/','/list'], async (req, res, next) => {
 		connect.release();
 	}
 	catch(e) {
-		connect.release();
+		if(connect) connect.release();
 		e.msg = 
 		`${e.code ? e.code : ""}\n
 		${e.errno ? e.errno : ""}\n
@@ -40,15 +40,76 @@ router.get('/write', (req, res) => {
 	res.render('book/write',pug);
 });
 
-router.post('/save',async (req, res) => {
-	const { title, writer, wdate, content} = req.body;
-	var values = [title,writer,wdate,content];
-	var query = 'INSERT INTO books SET title=?, writer=?, wdate=?, content=?';
-	const connect = await pool.getConnection();
-	const r = await connect.query(query, values);
-	connect.release();
-	res.redirect('/book/list');
-})
+
+router.get('/write/:id', async (req, res, next) => {
+	try{
+		var values = [req.params.id]
+		var query = `SELECT * FROM books WHERE id=?`;
+	
+		const connect = await pool.getConnection();
+		const r = await connect.query(query, values);
+		connect.release();
+		r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
+		const pug = {
+			file:'book-update',
+			title: '도서 수정',
+			titleSub: '수정해주세요',
+			book: r[0][0]
+		}
+		res.render('book/write',pug);
+	}
+	catch(err){
+		if(connect) connect.release();
+		next(err);
+	}
+});
+
+router.post('/save', async (req, res, next) => {
+	try{
+		const { title, writer, wdate, content} = req.body;
+		var values = [title,writer,wdate,content];
+		var query = 'INSERT INTO books SET title=?, writer=?, wdate=?, content=?';
+		const connect = await pool.getConnection();
+		const r = await connect.query(query, values);
+		connect.release();
+		res.redirect('/book/list');
+	}
+	catch(err){
+		if(connect) connect.release();
+		next(err);
+	}
+});
+
+router.get('/delete/:id', async (req, res, next) => {
+	try{
+		var id = req.params.id;
+		var query = `DELETE FROM books WHERE id = ${id}`;
+		const connect = await pool.getConnection();
+		const r = await connect.query(query);
+		res.send(alert(r[0].affectedRows>0 ? '삭제되었습니다.' : '삭제에 실패하였습니다.', '/book'));
+	}
+	catch(err){
+		if(connect) connect.release();
+		next(err);
+	}
+});
+
+
+router.post('/change', async (req, res, next) => {
+	try{
+		var {title, writer, wdate, content, id} = req.body;
+		var values = [title, writer, wdate, content, id];
+		var query = `UPDATE books SET title=?, writer=?, wdate=?, content=? WHERE id=?`;
+		const connect = await pool.getConnection();
+		const r = await connect.query(query, values);
+		connect.release();
+		res.send(alert(r[0].affectedRows > 0 ? '수정되었습니다.' : '수정에 실패하였습니다.', '/book'));
+	}
+	catch{err}{
+		if(connect) connect.release();
+		next(err);
+	}
+});
 
 module.exports = router;
 
