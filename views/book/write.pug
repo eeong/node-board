@@ -1,6 +1,6 @@
 extends ../layout/lo-default.pug
 block content
-	form(name="bookForm" action=`${book ? '/book/change' : '/book/save'}` method="post")
+	form(name="bookForm" action=`${book ? '/book/change' : '/book/save'}` method="post" enctype="multipart/form-data")
 		input(type="hidden" name="id" value=`${book && book.id ? book.id : ""}`)
 		table.table.tb-write
 			tbody
@@ -18,6 +18,15 @@ block content
 					td.title 발행일
 					td.content 
 						input.form-control(type="date" name="wdate" value=`${book && book.wdate ? book.wdate : ""}`)
+				tr
+					td.title 첨부화일
+					td.content
+						if book && book.savefile
+							.py-2.file-wrap=	book.realfile
+								a.ml-2.bt-remove(href=`javascript:onRemove(${book.id})`)
+									i.fa.fa-times
+						input.form-control-file(type="file" name="upfile")
+						.py-2.text-danger= `업로드 가능 파일: ${[...allowExt].join("/ ")}`
 				tr
 					td.title 내용
 					td.content 

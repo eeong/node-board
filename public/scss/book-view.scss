@@ -1,0 +1,16 @@
+@use 'dim';
+@use 'color';
+
+.view-table {
+	td.title {
+		width: 20%;
+		max-width: 120px;
+		font-weight: bold;
+		color: darken(color.$color-base, 5%);
+		border-right: 1px solid #eee;
+	}
+	td.content {
+		font-size: 1.125em;
+		
+	}
+}

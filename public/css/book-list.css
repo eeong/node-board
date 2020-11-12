@@ -26,3 +26,12 @@
     display: none;
   }
 }
+.table tr span.icon {
+  display: inline-block;
+  margin-left: 0.25em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  padding: 0.25em;
+  background-color: #f0d749;
+  color: #222;
+}

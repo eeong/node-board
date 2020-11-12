@@ -1,33 +1,14 @@
 //전역변수 모듈 불러오기 
 const express = require("express");
 const app = express();
-const fs = require("fs");
 const path = require("path");
-const moment = require("moment")
+const error = require("http-errors");
 
-const multer = require("multer");
-const { v4: uuidv4} = require("uuid");
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		var folder = path.join(__dirname, './storage', moment().format('YYMMDD'))
-		if(!fs.existsSync(folder)) fs.mkdirSync(folder);
-		cb(null, folder);
-	},
-  filename: (req, file, cb) => {
-		var ext = path.extname(file.originalname);
-		var name = moment().format('YYMMDD') + '-' +uuidv4() + ext;
-	 cb(null, name);
-	}
-});
-
- 
-const upload = multer({ storage});
 
 //사용자 모듈 불러오기
 const testRouter = require('./routes/test');
 const bookRouter = require('./routes/book');
-const errorRouter = require('./routes/error');
 
 //서버 실행 
 app.listen(3000, ()=>{
@@ -44,28 +25,21 @@ app.use(express.urlencoded({extended: false}));
 
 //미들웨어
 app.use('/', express.static(path.join(__dirname, './public')));
+app.use('/upload', express.static(path.join(__dirname,'./storage')));
 app.use('/test', testRouter);
 app.use('/book', bookRouter);
 
-//멀터
-
-app.get('/multer', (req, res, next) => {
-	res.render('multer/write.pug');
-	next();
-});
-
-app.post('/multer/save', upload.single('upfile'), (req, res, next) => {
-	res.json(req.body);
-});
-
 //예외처리
-app.use(errorRouter);
+app.use((req, res, next) => {
+	next(error(404, 'Page Not Found 페이지를 찾을 수 없습니다'));
+});
+
 app.use((err, req, res, next) => {
 	const pug ={
-		img : err.img || 500,
-		code: err.code || "!!!UNEXPECTED ERROR!!!",
-		msg: err.error || err
+		img : err.status == 404 ? err.status : 500,
+		code: err.status || 500,
+		msg: err.message || "Unexpected Error"
 	};
-
-	res.render('err/err.pug', pug);
+	console.log(err)
+	res.render('err/err.pug', pug); 
 });
