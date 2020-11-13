@@ -1,7 +1,6 @@
-	const fs = require("fs");
+	const fs = require("fs-extra");
 	const moment = require("moment")	
 	const path = require("path");
-
 	const multer = require("multer");
 	const { v4: uuidv4} = require("uuid");
 	const imgExt = ['jpg','jpeg','gif','png','svg'];
@@ -10,7 +9,8 @@
 	const storage = multer.diskStorage({
 		destination: (req, file, cb) => {
 			var folder = path.join(__dirname, '../storage', moment().format('YYMMDD'))
-			if(!fs.existsSync(folder)) fs.mkdirSync(folder);
+			//if(!fs.existsSync(folder)) fs.mkdirSync(folder); //node fs
+			fs.ensureDirSync(folder);
 			cb(null, folder);
 		},
 		filename: (req, file, cb) => {
