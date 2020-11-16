@@ -3,20 +3,20 @@
   min-width: 60px;
 }
 .table tr th:nth-child(2) {
-  width: 20%;
-  min-width: 120px;
+  width: 12%;
+  min-width: 100px;
 }
 .table tr th:nth-child(3) {
   width: 12%;
   min-width: 100px;
 }
 .table tr th:nth-child(4) {
-  width: 12%;
+  width: 14%;
   min-width: 120px;
 }
 .table tr th:nth-child(5) {
-  width: 10%;
-  min-width: 60px;
+  width: 30%;
+  min-width: 180px;
 }
 @media screen and (max-width: 767px) {
   .table tr th:nth-child(1), .table tr th:nth-child(3), .table tr th:nth-child(4) {

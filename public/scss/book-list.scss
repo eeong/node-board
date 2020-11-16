@@ -15,10 +15,10 @@
 
 .table tr{
 	th:nth-child(1) {width: 10%; min-width: 60px}
-	th:nth-child(2) {width: 20%; min-width: 120px}
+	th:nth-child(2) {width: 12%; min-width: 100px}
 	th:nth-child(3) {width: 12%; min-width: 100px}
-	th:nth-child(4) {width: 12%; min-width: 120px}
-	th:nth-child(5) {width: 10%; min-width: 60px}
+	th:nth-child(4) {width: 14%; min-width: 120px}
+	th:nth-child(5) {width: 30%; min-width: 180px}
 	@include screen(dim.$tablet);
 	span.icon {display: inline-block; margin-left: 0.25em; border-radius: 4px; font-size: 0.875em; padding: 0.25em; background-color: color.$color-icon; color: color.$color-base;}
 }

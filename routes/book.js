@@ -6,21 +6,20 @@ const path = require("path");
 const fs = require("fs-extra");
 
 const { pool , sqlGen } = require('../modules/mysql-connect');
-const { alert, getPath, getExt } = require("../modules/util");
+const { alert, getPath, getExt, txtCut } = require("../modules/util");
 const { upload, allowExt, imgExt } = require("../modules/multer");
 
 
 //book render
 router.get(['/','/list'], async (req, res, next) => {
-	let query = 'SELECT * FROM books ORDER BY id ASC LIMIT 0, 10';
+	// let query = 'SELECT * FROM books ORDER BY id ASC LIMIT 0, 10';
 	let connect, r, pug;
 	try {
-		connect = await pool.getConnection();
-		r = await connect.query(query);
-		connect.release();
+		r = await sqlGen('books', 'S', {limit: [0,10], order:'ORDER BY id DESC'});
 		for (let v of r[0]){
 		 v.wdate = moment(v.wdate).format('YYYY-MM-DD');
 		 if (v.savefile) v.icon = getExt(v.savefile,'upper');
+		 v.content = txtCut(v.content);
 		}	
 		pug = {
 		file: 'book-list',
@@ -55,12 +54,8 @@ router.get('/write', (req, res) => {
 router.get('/write/:id', async (req, res, next) => {
 	let values,query,r,connect,pug;
 	try{
-			values = [req.params.id]
-			query = `SELECT * FROM books WHERE id=?`;
-		 	connect = await pool.getConnection();
-			 r = await connect.query(query, values);
-			connect.release();
-			r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
+			r = await sqlGen('books', 'S', {id:req.params.id});
+		 	r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
 			pug = {
 			file:'book-update',
 			title: '도서 수정',
@@ -83,10 +78,7 @@ router.post('/save', upload.single('upfile') , async (req, res, next) => {
 			res.send(alert(`${req.ext}는 업로드 할 수 없는 확장자입니다.`,'/book'));
 		}
 		else {
-			let obj = sqlGen('I', 'books', ['title', 'writer', 'content', 'wdate'], req.body, req.file);
-			connect = await pool.getConnection();
-			r = await connect.query(obj.query, obj.values);
-			connect.release();
+			r = await sqlGen('books', 'I', {field:['title', 'writer', 'content', 'wdate'], data: req.body, file: req.file});
 			res.redirect('/book/list');
 		}
 	}
@@ -99,26 +91,22 @@ router.post('/save', upload.single('upfile') , async (req, res, next) => {
 
 
 router.post('/change', upload.single('upfile'), async (req, res, next) => {
-	let values,query,r,connect,pug;
+	let r,connect;
 	try{
 		if (req.allow == false) {
 			res.send(alert(`${req.ext}는 업로드 할 수 없는 확장자입니다.`,'/book'));
 		}
 		else {
-			connect = await pool.getConnection();
+			
 			if(req.file) {
-				query= 'SELECT savefile FROM books WHERE id=' +req.body.id;
-				r = await connect.query(query);
+				//query= 'SELECT savefile FROM books WHERE id=' +req.body.id;
+				r = await sqlGen('books', 'S', { id: req.body.id, field:['savefile']});
 				if(r[0][0].savefile) await fs.remove(getPath(r[0][0].savefile));
 			}
-			query = `UPDATE books SET title=?, writer=?, wdate=?, content=?`;
-			let obj = sqlGen('U', 'books', ["title","wdate","writer","content"], req.body , req.file);
-			obj.query += ` WHERE id= ${req.body.id}`;
-			r = await connect.query(obj.query, obj.values);
-			connect.release();
-			res.send(alert(r[0].affectedRows > 0 ? '수정되었습니다.' : '수정에 실패하였습니다.', '/book'));
+			//query = `UPDATE books SET title=?, writer=?, wdate=?, content=?`;
+				r = await sqlGen('books', 'U', { field: ["title", "wdate", "writer", "content"], data: req.body, file: req.file, id: req.body.id });
+				res.send(alert(r[0].affectedRows > 0 ? '수정되었습니다.' : '수정에 실패하였습니다.', '/book'));
 		}
-		
 	}
 	catch(err){
 		if(connect) connect.release();
@@ -128,17 +116,13 @@ router.post('/change', upload.single('upfile'), async (req, res, next) => {
 
 
 router.get('/delete/:id', async (req, res, next) => {
-	let values,query,r,connect,pug;
+	let r,connect;
 	try{
-		var id = req.params.id;
-		connect = await pool.getConnection();
-		query = `SELECT savefile FROM books WHERE id = ${id}`;
-		r = await connect.query(query);
-		connect.release();
+		//query = `SELECT savefile FROM books WHERE id = ${id}`;
+		r = await sqlGen('books', 'S', {id: req.params.id});
 		if(r[0][0].savefile) await fs.remove(getPath(r[0][0].savefile));
-		query = `DELETE FROM books WHERE id = ${id}`;
-		r = await connect.query(query);
-		connect.release();
+		// query = `DELETE FROM books WHERE id = ${id}`;
+		r = await sqlGen('books', 'D', {id: req.params.id});
 		res.send(alert(r[0].affectedRows>0 ? '삭제되었습니다.' : '삭제에 실패하였습니다.', '/book'));
 	}
 	catch(err){
@@ -153,12 +137,10 @@ router.post('/multer/save', upload.single('upfile'), (req, res, next) => {
 });
 
 router.get('/view/:id', async (req, res, next) => {
-	let connect, query, pug, r, book;
+	let connect, pug, r, book;
 	try{
-		query = `SELECT * FROM books WHERE id= ${req.params.id}`;
-		connect = await pool.getConnection();
-		r = await connect.query(query);
-		connect.release();
+		// query = `SELECT * FROM books WHERE id= ${req.params.id}`;
+		r = await sqlGen('books','S', {id:req.params.id});
 		book = r[0][0];
 		book.wdate = moment(book.wdate).format('YYYY-MM-DD');
 		if(book.savefile){
@@ -195,17 +177,14 @@ router.get('/download', (req, res, next) => {
 });
 
 router.get('/remove/:id', async (req, res, next) => {
-	let connect, query, values, r;
+	let connect, r;
 	try {
-		query = 'SELECT savefile FROM books WHERE id=' + req.params.id;
-		connect = await pool.getConnection();
-		r = await connect.query(query);
-		connect.release();
+		//query = 'SELECT savefile FROM books WHERE id=' + req.params.id;
+		r = await sqlGen('books', 'S', {id: req.params.id, field:['savefile']} );
 		let book = r[0][0];
 		await fs.remove(getPath(book.savefile));
-		query = 'UPDATE books SET savefile=NULL, realfile=NULL, filesize=NULL WHERE id=' + req.params.id;
-		r = await connect.query(query);
-		connect.release();
+		//query = 'UPDATE books SET savefile=NULL, realfile=NULL, filesize=NULL WHERE id=' + req.params.id;
+		r = await sqlGen('books','U',{id:req.params.id, field:['savefile', 'realfile', 'filesize'], data:{savefile:null,reqlfile:null,filesize:null}});
 		res.json({code: 200});
 	}
 	catch(err) {

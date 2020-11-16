@@ -11,14 +11,20 @@ const pool = mysql2.createPool({
 	queueLimit: 0
 });
 
-const sqlGen = (mode, table, field, data, file) => {
-	let values = [], query;
+const sqlGen = async (table, mode, obj) => {
+	let {field=[], data={}, file=null, id=null, order= null, limit=null } = obj;
+	let values=[], query=null;
 	let temp = Object.entries(data).filter((v) => {
 		return field.includes(v[0]); 
 	});
 	
-	if(mode == 'I') query = 'INSERT INTO ' +table+ ' SET ';
-	else query = 'UPDATE ' +table+ ' SET ';
+	if(mode == 'I') query = `INSERT INTO ${table} SET `;
+	if(mode == 'U') query = `UPDATE ${table} SET `;
+	if(mode == 'D') query = `DELETE FROM ${table}`;
+	if(mode == 'S') query = `SELECT ${field.length == 0 ? '*' : field.toString()} FROM ${table} `;
+	if(mode !== 'U' && id) query += ` WHERE id=${id} `;
+	if(order) query += ` ${order} `;
+	if(limit && limit.length == 2) query += ` LIMIT ${limit[0]}, ${limit[1]} `;
 	
 	if(file) {
 		temp.push(['savefile', file.filename]); 
@@ -30,8 +36,14 @@ const sqlGen = (mode, table, field, data, file) => {
 		values.push(v[1]);
 	}
 	query = query.substr(0, query.length - 1);
-	return {query, values}
+	if(mode == 'U' && id) query += ` WHERE id= ${id} `;
+	
+	let connect = await pool.getConnection();
+	let r = await connect.query(query,values);
+	connect.release();
+
+	return r;
 }
 
 
-module.exports = { pool, sqlGen};
+module.exports = { pool, mysql2, sqlGen };

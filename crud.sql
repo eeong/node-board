@@ -5,3 +5,9 @@
 -- SELECT * FROM books ORDER BY id ASC;
 -- SELECT * FROM books WHERE id=3;
 -- SELECT * FROM books ORDER BY id ASC LIMIT 0, 3;
+-- SELECT count(*) FROM books;
+
+-- PAGER QUERY
+-- SELECT * FROM books ORDER BY id DESC LIMIT (페이지index-1)*보여지는 테이블 갯수 , 보여지는 테이블 갯수
+
+
