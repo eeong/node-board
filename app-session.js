@@ -1,19 +1,14 @@
 //전역변수 모듈 불러오기 
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
 const error = require("http-errors");
+const session = require("express-session");
 
-
-
-//사용자 모듈 불러오기
-const testRouter = require('./routes/test');
-const bookRouter = require('./routes/book');
 
 //서버 실행 
-app.listen(process.env.port, ()=>{
- console.log("Server listen at http://127.0.0.1:"+process.env.PORT)
+app.listen(3000, ()=>{
+ console.log("Server listen at http://127.0.0.1:3000")
 }); 
 
 //초기 설정
@@ -26,9 +21,14 @@ app.use(express.urlencoded({extended: false}));
 
 //미들웨어
 app.use('/', express.static(path.join(__dirname, './public')));
-app.use('/upload', express.static(path.join(__dirname,'./storage')));
-app.use('/test', testRouter);
-app.use('/book', bookRouter);
+
+//app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 //예외처리
 app.use((req, res, next) => {

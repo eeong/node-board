@@ -8,14 +8,19 @@ const fs = require("fs-extra");
 const { pool , sqlGen } = require('../modules/mysql-connect');
 const { alert, getPath, getExt, txtCut } = require("../modules/util");
 const { upload, allowExt, imgExt } = require("../modules/multer");
-
+const {	pager } = require('../modules/pager-connect');
 
 //book render
-router.get(['/','/list'], async (req, res, next) => {
+router.get(['/','/list','/list/:page'], async (req, res, next) => {
 	// let query = 'SELECT * FROM books ORDER BY id ASC LIMIT 0, 10';
-	let connect, r, pug;
+	let connect, r, pug, totalRecord, maxList, maxPager;
+	let page = req.params.page || 1;
+	req.app.locals.page = page;
 	try {
-		r = await sqlGen('books', 'S', {limit: [0,10], order:'ORDER BY id DESC'});
+		r = await sqlGen('books', 'S', {field: ['count(id)']});
+		totalRecord = r[0][0]['count(id)'];
+		let pagers = pager(page, totalRecord, {maxList: 3, maxPage: 3});
+		r = await sqlGen('books', 'S', {limit: [pagers.startIdx, pagers.maxList], order:'ORDER BY id DESC'});
 		for (let v of r[0]){
 		 v.wdate = moment(v.wdate).format('YYYY-MM-DD');
 		 if (v.savefile) v.icon = getExt(v.savefile,'upper');
@@ -25,7 +30,8 @@ router.get(['/','/list'], async (req, res, next) => {
 		file: 'book-list',
 		title: '도서 리스트',
 		titleSub: '고전도서 리스트',
-		lists: r[0]
+		lists: r[0],
+		...pagers
 		}
 		res.render('book/list',pug);
 	}
@@ -154,7 +160,8 @@ router.get('/view/:id', async (req, res, next) => {
 			file:'book-view',
 			title: '도서 상세보기',
 			titleSub: '도서의 내용을 보여줌',
-			book
+			book,
+			page: req.app.locals.page
 		}
 		res.render('book/view', pug);
 	}

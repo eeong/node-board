@@ -27,5 +27,7 @@ block content
 					if book.src
 						hr
 						img.mw-100(src=`${book.src}`)
-	.mt-3.my-5.pb-5.text-cecnter
-		a.btn.btn-info(href='/book') 도서 리스트
+	.mt-3.my-5.pb-5.text-right
+		a.btn.btn-success.mr-2(href=`javascript:onUpdate(${book.id})`) 수정
+		a.btn.btn-danger(href=`javascript:onDelete(${book.id})`) 삭제
+		a.btn.btn-info.mx-5(href=`/book/list/${page || 1}`) 도서 리스트
