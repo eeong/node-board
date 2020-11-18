@@ -1,0 +1,33 @@
+extends ../layout/lo-default.pug
+
+block content
+	form(name='joinForm' action='/user/save' method='post' onsubmit='return onSubmit(this)')
+		input(type="hidden" name="validUserid" value="")
+		input(type="hidden" name="validUserpw" value="")
+		input(type="hidden" name="validUsername" value="")
+		input(type="hidden" name="validUsermail" value="")
+		table.table.border-bottom
+			tbody
+				tr
+					td.title 아이디
+					td.content
+						input.form-control(type='text' name='userid' placeholder='아이디')
+						.valid 
+				tr
+					td.title 비밀번호
+					td.content
+						input.form-control(type='password' name='userpw' placeholder='비밀번호')
+						.valid 
+				tr
+					td.title 이름
+					td.content
+						input.form-control(type='text' name='username' placeholder='이름')
+						.valid 
+				tr
+					td.title 이메일
+					td.content
+						input.form-control(type='text' name='usermail' placeholder='이메일')
+						.valid 
+		text-center.my-5
+			button.btn.btn-primary 가입
+			button.btn.btn-danger(type='reset') 재작성

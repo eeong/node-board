@@ -1,0 +1,25 @@
+
+.table {
+	td {
+		padding-bottom: 0.25em;
+	}
+	.title {
+		width: 20%;
+		min-width: 120px;
+		padding-left: 1em;
+		font-weight: bold;
+	}
+	input {
+		max-width: 200px;
+	}
+	input[name="usermail"] {
+		max-width: 600px;
+	}
+	.valid {
+		padding-top: 0.25em;
+		color: #ca4852;
+		&.active {
+			color: #4454ba;
+		}
+	}
+}

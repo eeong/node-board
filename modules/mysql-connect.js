@@ -13,19 +13,18 @@ const pool = mysql2.createPool({
 });
 
 const sqlGen = async (table, mode, obj) => {
-	let {field=[], data={}, file=null, id=null, order= null, limit=null } = obj;
-	let values=[], query=null;
+	let {field=[], data={}, file=null, where=null, order= [], limit=[] } = obj;
+	let values=[], query=null, connect=null, r=null;
 	let temp = Object.entries(data).filter((v) => {
 		return field.includes(v[0]); 
 	});
 	
+	if(mode) mode = mode.toUpperCase();
+
 	if(mode == 'I') query = `INSERT INTO ${table} SET `;
 	if(mode == 'U') query = `UPDATE ${table} SET `;
-	if(mode == 'D') query = `DELETE FROM ${table}`;
+	if(mode == 'D') query = `DELETE FROM ${table} `;
 	if(mode == 'S') query = `SELECT ${field.length == 0 ? '*' : field.toString()} FROM ${table} `;
-	if(mode !== 'U' && id) query += ` WHERE id=${id} `;
-	if(order) query += ` ${order} `;
-	if(limit && limit.length == 2) query += ` LIMIT ${limit[0]}, ${limit[1]} `;
 	
 	if(file) {
 		temp.push(['savefile', file.filename]); 
@@ -37,13 +36,42 @@ const sqlGen = async (table, mode, obj) => {
 		values.push(v[1]);
 	}
 	query = query.substr(0, query.length - 1);
-	if(mode == 'U' && id) query += ` WHERE id= ${id} `;
-	
-	let connect = await pool.getConnection();
-	let r = await connect.query(query,values);
-	connect.release();
+	if(Array.isArray(where)){
+		if(where[2] && where[2].toLowerCase() == 'like')
+		query += ` WHERE ${where[0]} LIKE '%${where[1]}%'`;
+		else 
+		query += ` WHERE ${where[0]} = '${where[1]}'`;
+		
+	}
+		if(where && where.fields && where.op && (where.op.toLowerCase() == 'and' || where.op.toLowerCase() == 'or')){
+			for(let i in where.fields){
+				if(i == 0) query += ` WHERE `;
+				else query += ` ${where.op} `;
+					if(where.fields[i][2] && where.fields[i][2].toLowerCase() == 'like')
+					query += ` WHERE ${where.fields[i][0]} LIKE '%${where.fields[i][1]}%'`;
+					else 
+					query += ` WHERE ${where.fields[i][0]} = '${where.fields[i][1]}'`;
+			}
+	}
 
-	return r;
+	if(order.length > 1) query += ` ORDER BY ${order[0]} ${order[1]}`;
+	if(limit.length > 1) query += ` LIMIT ${limit[0]}, ${limit[1]}`;
+	
+	if((mode=='D' || mode == 'U') && query.indexOf('WHERE') == -1 ) throw new Error('수정,삭제는 where 절이 필요함');
+	
+	
+	
+	try{
+		connect = await pool.getConnection();
+		r = await connect.query(query,values);
+		connect.release();
+		return r;
+	}
+	catch(err){
+		if(connect) connect.release();
+		throw new Error(err);
+	}
+
 }
 
 

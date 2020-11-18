@@ -6,10 +6,10 @@ const path = require("path");
 const error = require("http-errors");
 
 
-
 //사용자 모듈 불러오기
 const testRouter = require('./routes/test');
 const bookRouter = require('./routes/book');
+const userRouter = require('./routes/user');
 
 //서버 실행 
 app.listen(process.env.port, ()=>{
@@ -29,6 +29,7 @@ app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/upload', express.static(path.join(__dirname,'./storage')));
 app.use('/test', testRouter);
 app.use('/book', bookRouter);
+app.use('/user', userRouter);
 
 //예외처리
 app.use((req, res, next) => {

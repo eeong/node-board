@@ -35,3 +35,9 @@
   background-color: #f0d749;
   color: #222;
 }
+
+.divide {
+  width: 1px;
+  height: 30px;
+  background-color: #666;
+}
