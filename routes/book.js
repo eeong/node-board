@@ -31,6 +31,7 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 		title: '도서 리스트',
 		titleSub: '고전도서 리스트',
 		lists: r[0],
+		user: req.session.user || null,
 		...pagers
 		}
 		res.render('book/list',pug);

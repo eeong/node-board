@@ -1,4 +1,4 @@
-const pager = (page, totalRecord, obj) => {
+module.exports = (page, totalRecord, obj) => {
 	page = Number(page);
 	let {maxList = 5, maxPage = 5} = obj || {};
 	let totalPage, pagerIdx, startIdx, startPage, endPage, nextPage, prevPage, nextPager, prevPager, firstPage, lastPage;
@@ -16,5 +16,3 @@ const pager = (page, totalRecord, obj) => {
 	p = {page, totalRecord, maxList, maxPage, totalPage, pagerIdx, startIdx, startPage, endPage, nextPage, prevPage, nextPager, prevPager, firstPage, totalPage};
 	return p;
 }
-
-module.exports = {pager};

@@ -10,6 +10,8 @@ const error = require("http-errors");
 const testRouter = require('./routes/test');
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
+const session = require('./modules/session-connect');
+
 
 //서버 실행 
 app.listen(process.env.port, ()=>{
@@ -23,6 +25,8 @@ app.locals.pretty = true;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(session());
+
 
 //미들웨어
 app.use('/', express.static(path.join(__dirname, './public')));
@@ -30,6 +34,8 @@ app.use('/upload', express.static(path.join(__dirname,'./storage')));
 app.use('/test', testRouter);
 app.use('/book', bookRouter);
 app.use('/user', userRouter);
+
+
 
 //예외처리
 app.use((req, res, next) => {

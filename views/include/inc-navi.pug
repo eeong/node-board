@@ -14,22 +14,21 @@
 	else
 		.navi
 			a(href="/book/write") BOOK Write
-	div.divide
-	if file == 'user-join'
-		.navi.active
-			a(href="/user/join") JOIN
-	else
-		.navi
-			a(href="/user/join") JOIN
-	if file == 'user-login'
-		.navi.active
-			a(href="/user/login") LOGIN
-	else
-		.navi
-			a(href="/user/login") LOGIN
-	if file == 'user-logout'
-		.navi.active
-			a(href="/user/logout") LOGOUT
-	else
+	.divide
+	if !user
+		if file == 'user-join'
+			.navi.active
+				a(href="/user/join") JOIN
+		else
+			.navi
+				a(href="/user/join") JOIN
+	if !user
+		if file == 'user-login'
+			.navi.active
+				a(href="/user/login") LOGIN
+		else
+			.navi
+				a(href="/user/login") LOGIN
+	if user
 		.navi
 			a(href="/user/logout") LOGOUT

@@ -1,0 +1,18 @@
+@use 'color';
+
+form[name="loginForm"] {
+	width: 90%;
+	max-width: 500px;
+	padding: 2em;
+	margin:2em auto;
+	border: 1px solid lighten(color.$color-base, 50%);
+	border-radius: 7px;
+	td {
+		vertical-align: middle;
+	}
+	.title {
+		font-weight: bold;
+		padding-left: 1em;
+
+	}
+}
