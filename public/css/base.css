@@ -11,6 +11,7 @@ ul, li, p, div, form, h1, h2, h3, h4, h5, header, footer, section, aside, articl
 
 a {
   color: inherit !important;
+  text-decoration: none;
 }
 a:hover, a:active {
   color: inherit;

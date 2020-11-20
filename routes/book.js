@@ -8,7 +8,8 @@ const fs = require("fs-extra");
 const { pool , sqlGen } = require('../modules/mysql-connect');
 const { alert, getPath, getExt, txtCut } = require("../modules/util");
 const { upload, allowExt, imgExt } = require("../modules/multer");
-const {	pager } = require('../modules/pager-connect');
+const pager = require('../modules/pager-connect');
+const {isUser, isGuest} = require("../modules/auth-connect");
 
 //book render
 router.get(['/','/list','/list/:page'], async (req, res, next) => {
@@ -26,12 +27,12 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 		 if (v.savefile) v.icon = getExt(v.savefile,'upper');
 		 v.content = txtCut(v.content);
 		}	
+		console.log(r[0])
 		pug = {
 		file: 'book-list',
 		title: '도서 리스트',
 		titleSub: '고전도서 리스트',
 		lists: r[0],
-		user: req.session.user || null,
 		...pagers
 		}
 		res.render('book/list',pug);
@@ -46,7 +47,7 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 	}
 	});
 
-router.get('/write', (req, res) => {
+router.get('/write', isUser, (req, res) => {
 	const pug = {
 		file:'book-write',
 		title: '도서 작성',
@@ -57,10 +58,19 @@ router.get('/write', (req, res) => {
 });
 
 
-router.get('/write/:id', async (req, res, next) => {
+router.get('/write/:id', isUser, async (req, res, next) => {
 	let values,query,r,connect,pug;
 	try{
-			r = await sqlGen('books', 'S',{ where:['id', req.params.id]});
+			//r = await sqlGen('books', 'S',{ where:['id', req.params.id]});
+			r = await sqlGen('books', 'S',{ 
+				where:{
+					op:'AND', 
+						fields:[
+							['id', req.params.id],
+							['uid', req.session.user.id]
+						]
+					}
+				});
 		 	r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
 			pug = {
 			file:'book-update',
@@ -76,7 +86,7 @@ router.get('/write/:id', async (req, res, next) => {
 	}
 });
 
-router.post('/save', upload.single('upfile') , async (req, res, next) => {
+router.post('/save',isUser, upload.single('upfile') , async (req, res, next) => {
 	let r,connect;
 	try{
 		if (req.allow == false) {
@@ -94,7 +104,7 @@ router.post('/save', upload.single('upfile') , async (req, res, next) => {
 
 
 
-router.post('/change', upload.single('upfile'), async (req, res, next) => {
+router.post('/change',isUser, upload.single('upfile'), async (req, res, next) => {
 	let r,connect;
 	try{
 		if (req.allow == false) {
@@ -104,7 +114,14 @@ router.post('/change', upload.single('upfile'), async (req, res, next) => {
 			
 			if(req.file) {
 				//query= 'SELECT savefile FROM books WHERE id=' +req.body.id;
-				r = await sqlGen('books', 'S', { where:['id', req.body.id], field:['savefile']});
+				r = await sqlGen('books', 'S', {
+					where:{
+					op:'AND', 
+						fields:[
+							['id', req.body.id],
+							['uid', req.session.user.id]
+						]
+					}, field:['savefile']});
 				if(r[0][0].savefile) await fs.remove(getPath(r[0][0].savefile));
 			}
 			//query = `UPDATE books SET title=?, writer=?, wdate=?, content=?`;
@@ -118,14 +135,30 @@ router.post('/change', upload.single('upfile'), async (req, res, next) => {
 });
 
 
-router.get('/delete/:id', async (req, res, next) => {
+router.get('/delete/:id',isUser, async (req, res, next) => {
 	let r,connect;
 	try{
 		//query = `SELECT savefile FROM books WHERE id = ${id}`;
-		r = await sqlGen('books', 'S', {where:['id', req.params.id]});
+		r = await sqlGen('books', 'S', {
+			where:{
+			op:'AND', 
+				fields:[
+					['id', req.params.id],
+					['uid', req.session.user.id]
+				]
+			}
+		});
 		if(r[0][0].savefile) await fs.remove(getPath(r[0][0].savefile));
 		// query = `DELETE FROM books WHERE id = ${id}`;
-		r = await sqlGen('books', 'D', {where:['id', req.params.id]});
+		r = await sqlGen('books', 'D', {
+			where:{
+			op:'AND', 
+				fields:[
+					['id', req.params.id],
+					['uid', req.session.user.id]
+				]
+			}
+		});
 		res.send(alert(r[0].affectedRows>0 ? '삭제되었습니다.' : '삭제에 실패하였습니다.', '/book'));
 	}
 	catch(err){
@@ -134,16 +167,20 @@ router.get('/delete/:id', async (req, res, next) => {
 	}
 });
 
-router.post('/multer/save', upload.single('upfile'), (req, res, next) => {
+router.post('/multer/save',isUser, upload.single('upfile'), (req, res, next) => {
 	res.redirect('/book');
 });
 
 router.get('/view/:id', async (req, res, next) => {
 	let connect, pug, r, book;
 	try{
+		r = await sqlGen('books', 'S', {field: ['count(id)']});
+		totalRecord = r[0][0]['count(id)'];
 		// query = `SELECT * FROM books WHERE id= ${req.params.id}`;
-		r = await sqlGen('books','S', {where:['id',req.params.id]});
-		book = r[0][0];
+		r = await sqlGen('books','S', {between:['id', Number(req.params.id)-1, Number(req.params.id)+1]});
+		book = r[0][1];
+		if(r[0][2]) book.next =  [r[0][2].title, r[0][2].writer, r[0][2].content] ;
+		if(r[0][0]) book.prev = [r[0][0].title, r[0][0].writer, r[0][0].content] ;
 		book.wdate = moment(book.wdate).format('YYYY-MM-DD');
 		if(book.savefile){
 			book.file = getPath(book.savefile,'rel'); //`/upload/${book.savefile.substr(0, 6)}/${book.savefile}`;
@@ -156,6 +193,7 @@ router.get('/view/:id', async (req, res, next) => {
 			title: '도서 상세보기',
 			titleSub: '도서의 내용을 보여줌',
 			book,
+			totalRecord,
 			page: req.app.locals.page
 		}
 		res.render('book/view', pug);
@@ -176,15 +214,29 @@ router.get('/download', (req, res, next) => {
 	}
 });
 
-router.get('/remove/:id', async (req, res, next) => {
+router.get('/remove/:id',isUser, async (req, res, next) => {
 	let connect, r;
 	try {
 		//query = 'SELECT savefile FROM books WHERE id=' + req.params.id;
-		r = await sqlGen('books', 'S', {where:['id', req.params.id], field:['savefile']} );
+		r = await sqlGen('books', 'S', {
+			where:{
+			op:'AND', 
+				fields:[
+					['id', req.params.id],
+					['uid', req.session.user.id]
+				]
+			}, field:['savefile']} );
 		let book = r[0][0];
 		await fs.remove(getPath(book.savefile));
 		//query = 'UPDATE books SET savefile=NULL, realfile=NULL, filesize=NULL WHERE id=' + req.params.id;
-		r = await sqlGen('books','U',{where:['id', req.params.id], field:['savefile', 'realfile', 'filesize'], data:{savefile:null,reqlfile:null,filesize:null}});
+		r = await sqlGen('books','U',{
+			where:{
+			op:'AND', 
+				fields:[
+					['id', req.params.id],
+					['uid', req.session.user.id]
+				]
+			}, field:['savefile', 'realfile', 'filesize'], data:{savefile:null,reqlfile:null,filesize:null}});
 		res.json({code: 200});
 	}
 	catch(err) {

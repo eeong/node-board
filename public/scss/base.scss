@@ -12,7 +12,8 @@ ul,li,p,div,form,h1,h2,h3,h4,h5,header,footer,section,aside,article,nav{
 
 a {
 	color:inherit !important;
-	&:hover,&:active{
+	text-decoration: none;
+	&:hover, &:active{
 		color:inherit;
 		text-decoration: none;
 	}

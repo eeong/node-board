@@ -4,8 +4,9 @@ const error = require('http-errors');
 const bcrypt = require('bcrypt');
 const {pool, sqlGen} = require("../modules/mysql-connect");
 const {alert} =require("../modules/util");
+const {isUser, isGuest} = require("../modules/auth-connect");
 
-router.get('/join', (req,res,next)=>{
+router.get('/join', isGuest , (req,res,next)=>{
 	const pug = {
 		file:'user-join', title: '회원가입',
 		titleSub: '회원가입 창 입니다'
@@ -31,7 +32,7 @@ router.post('/save', async (req, res, next) => {
 	}
 })
 
-router.get('/login', (req, res, next)=>{
+router.get('/login', isGuest, (req, res, next)=>{
 	const pug = {
 		file:'user-login', title: '로그인',
 		titleSub: '로그인하십시오'
@@ -39,7 +40,7 @@ router.get('/login', (req, res, next)=>{
 	res.render('user/login' , pug);
 });
 
-router.post('/logon', async (req, res, next) => {
+router.post('/logon',isGuest, async (req, res, next) => {
 	try {
 		let msg = '아이디 또는 패스워드가 올바르지 않습니다'
 		let r = await sqlGen('users','S',{ where:['userid', req.body.userid]});
@@ -48,10 +49,12 @@ router.post('/logon', async (req, res, next) => {
 			// 세션 처리
 			if(compare) {
 			req.session.user = {
+				id: r[0][0].id,
 				userid: r[0][0].userid,
 				username: r[0][0].username,
 				usermail: r[0][0].usermail,
 			}
+			req.app.locals.user = req.session.user;
 			res.send(alert('로그인되었습니다','/book'));
 		}
 			else res.send(alert(msg,'/user/login'))
@@ -63,7 +66,7 @@ router.post('/logon', async (req, res, next) => {
 	}
 })
 
-router.get('/logout', (req, res, next) => {
+router.get('/logout', isUser , (req, res, next) => {
 	req.session.destroy();
 	res.send(alert('로그아웃 되었습니다','/'));
 });

@@ -8,3 +8,11 @@
 .view-table td.content {
   font-size: 1.125em;
 }
+
+.nextprev {
+  border-bottom: 1px solid #eee;
+}
+.nextprev .missing {
+  font-size: 0.925em;
+  padding-left: 0.75em;
+}

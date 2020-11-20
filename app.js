@@ -11,6 +11,8 @@ const testRouter = require('./routes/test');
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
 const session = require('./modules/session-connect');
+const morgan = require('./modules/morgan-connect');
+const local = require('./modules/locals');
 
 
 //서버 실행 
@@ -21,12 +23,13 @@ app.listen(process.env.port, ()=>{
 //초기 설정
 app.set('view engine', 'pug');
 app.set('views', './views');
-app.locals.pretty = true;
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(morgan());
 app.use(session());
-
+app.use(local());
 
 //미들웨어
 app.use('/', express.static(path.join(__dirname, './public')));

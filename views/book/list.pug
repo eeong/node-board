@@ -21,8 +21,9 @@ block content
 						if v.icon 
 							span.icon= v.icon
 					td
-						a(href=`javascript: onUpdate(${v.id});`) 
-							i.fa.fa-edit
-						a.pl-2(href=`javascript: onDelete(${v.id});`)
-							i.fa.fa-trash-alt
+						if user && v.uid == user.id
+							a(href=`javascript: onUpdate(${v.id});`) 
+								i.fa.fa-edit
+							a.pl-2(href=`javascript: onDelete(${v.id});`)
+								i.fa.fa-trash-alt
 	include ../include/inc-pager.pug

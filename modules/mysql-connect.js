@@ -13,7 +13,7 @@ const pool = mysql2.createPool({
 });
 
 const sqlGen = async (table, mode, obj) => {
-	let {field=[], data={}, file=null, where=null, order= [], limit=[] } = obj;
+	let {field=[], data={}, file=null, where=null, order= [], limit=[], between=[] } = obj;
 	let values=[], query=null, connect=null, r=null;
 	let temp = Object.entries(data).filter((v) => {
 		return field.includes(v[0]); 
@@ -56,7 +56,8 @@ const sqlGen = async (table, mode, obj) => {
 
 	if(order.length > 1) query += ` ORDER BY ${order[0]} ${order[1]}`;
 	if(limit.length > 1) query += ` LIMIT ${limit[0]}, ${limit[1]}`;
-	
+	if(between.length > 1) query += ` WHERE ${between[0]} BETWEEN ${between[1]} AND ${between[2]}`
+
 	if((mode=='D' || mode == 'U') && query.indexOf('WHERE') == -1 ) throw new Error('수정,삭제는 where 절이 필요함');
 	
 	

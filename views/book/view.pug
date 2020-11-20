@@ -27,7 +27,27 @@ block content
 					if book.src
 						hr
 						img.mw-100(src=`${book.src}`)
-	.mt-3.my-5.pb-5.text-right
-		a.btn.btn-success.mr-2(href=`javascript:onUpdate(${book.id})`) 수정
-		a.btn.btn-danger(href=`javascript:onDelete(${book.id})`) 삭제
-		a.btn.btn-info.mx-5(href=`/book/list/${page || 1}`) 도서 리스트
+	.my-3.py-1.nextprev
+		if book.id < totalRecord
+			.d-block.my-3.d-flex
+				.font-weight-bold.text-break.mr-3 다음글
+				a.flex-grow-1(href=`/book/view/${book.id+1}`)= `${book.next[2].substr(0,55)}...`
+				.mx-2= `${book.next[0]} `
+				= `/ ${book.next[1]}`
+		else
+			.missing.font-weight-light.font-italic.ml-5 다음글이 존재하지 않습니다.
+
+		if book.id > 1
+			.d-block.my-3.d-flex
+				.font-weight-bold.mr-3 이전글
+				a.flex-grow-1(href=`/book/view/${book.id-1}`)= `${book.prev[2].substr(0,55)}...`
+				.mx-2= `${book.prev[0]} `
+				= `/ ${book.prev[1]}`
+		else
+			.missing.border-right.font-weight-bold.mr-2 이전글이 존재하지 않습니다.
+
+	.my-5.pb-5.text-center
+		if user && user.id == book.uid
+			a.btn.btn-success.mr-2(href=`javascript:onUpdate(${book.id})`) 수정
+			a.btn.btn-danger(href=`javascript:onDelete(${book.id})`) 삭제
+			a.btn.btn-info.float-right(href=`/book/list/${page || 1}`) 도서 리스트

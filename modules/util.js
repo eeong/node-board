@@ -1,5 +1,5 @@
 const path = require("path");
-const alert = (msg,location) => {
+const alert = (msg, location) => {
 	return `<script>	alert('${msg}'); location.href = '${location}';	</script>`;
 }
 
