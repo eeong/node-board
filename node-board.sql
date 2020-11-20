@@ -5,8 +5,26 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+CREATE DATABASE IF NOT EXISTS `eeong` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `eeong`;
+
+CREATE TABLE IF NOT EXISTS `books` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci,
+  `wdate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `savefile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `realfile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filesize` int DEFAULT NULL,
+  `uid` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_books_users` (`uid`),
+  CONSTRAINT `FK_books_users` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT IGNORE INTO `books` (`id`, `title`, `writer`, `content`, `wdate`, `savefile`, `realfile`, `filesize`, `uid`) VALUES
+INSERT INTO `books` (`id`, `title`, `writer`, `content`, `wdate`, `savefile`, `realfile`, `filesize`, `uid`) VALUES
 	(1, '흥보전', '작자미상', '흥부전(興夫傳)은 조선 시대의 작자 미상의 고전소설로 빈부격차에 대한 비판 내용을 담고 있으며, 한국에서 널리 알려진 이야기이다. 유래는 국문본으로 ‘흥보전(興甫傳)’ 또는 ‘놀부전’이라고도 한다. 춘향전이나 심청전과 같이 판소리 계열에 속하는 소설이다. 불합리한 당시 세태를 비판하고 비꼬는 내용과 권선징악의 테마를 가지고 있다. 흥부전을 바탕으로 만들어진 판소리 ‘흥보가’도 있다.', '1833-01-01 00:00:00', '201116-b23e8f66-c3e5-48ff-a48a-a05ce1f5764d.jpg', '흥부전.jpg', 45444, 1),
 	(2, '심청전', '작자미상', '이 작품의 주인공 심청은 가난한 봉사 심학규의 딸로 태어나서 일찍 어머니를 여의고, 눈먼 아버지의 보살핌으로 자란 뒤에 아버지를 지성으로 모셨다. 심청은 공양미 300석을 부처님께 바치면 아버지가 눈을 뜰 수 있다는 말을 듣고, 항해의 안전을 기원하는 제의의 제물로 자기 몸을 팔았다. 심청은 인당수(印塘水)에서 물에 빠졌는데, 병을 앓던 용왕은 심청의 간을 빼서 병을 치료하고 심청은 연꽃에 태워 다시 인당수로 보냈다. 그때 마침 이곳을 지나던 뱃사람들이 이 연꽃을 임금님께 바쳤다. 연꽃에서 나온 심청은 왕과 혼인하였다. 왕비가 된 심청은 고향을 떠나 떠도는 아버지를 찾기 위해 맹인 잔치를 열었는데, 맹인 잔치에 온 아버지는 딸을 만나자 반가움과 놀라움에 눈을 떴다.', '1111-11-11 00:00:00', '201116-b60141c1-e349-4593-bbfb-74e2a4391e87.jpg', '심청전.jpg', 14572, 2),
 	(3, '허생전', '박지원', '주인공인 허생은 10년 계획을 세우고 글공부에 몰두하지만 7년째 되는 어느 날 가난한 살림에 지친 아내가 허생에게 장인 노릇도 못하고 장사도 못 한다면 도둑질이라도 해서 돈을 벌어 오라고 눈물로 호소한다. 이에 허생은 글공부를 중단하고 장안의 갑부인 변씨를 찾아가서 1만 냥의 돈을 빌린다. 허생은 1만 냥으로 시장에 나가서 과일, 말총 등 생필품을 독점하여 가격이 오를 때에 파는 매점매석으로 독점시장을 형성하여 큰돈을 벌었다. 그는 무역이 잘 되지 않는 조선 땅의 현실에 한탄을 한다. 그 뒤 허생이 한 뱃사공을 만나 살기 좋은 섬으로 사슴과 노루가 뛰노는 남쪽의 어느 작은 무인도를 소개받게 되는데, 마침 그때 조선 땅에 수천의 도둑떼가 들끓어, 허생이 그들을 회유하여 뱃사공이 소개해 준 무인도로 데려가서 새로운 섬나라를 세우고, 그 곳에서 난 작물들을 흉년이 든 일본의 한 지방인 나가사키에 팔아 큰돈을 벌고는 허생 혼자서 다시 조선 땅으로 돌아오게 된다. 조선에 돌아와서는 가난한 사람들을 도와 주고 남은 10만 냥의 돈은 변씨에게 갚는다. 이에 변씨는 놀라서 원금에 1할의 이자만 쳐서 받으려 했지만 허생은 거절했고, 오히려 이를 계기로 허생과 변씨는 친해지게 된다. 그러던 어느 날 변씨는 허생과 이야기를 주고 받다가 조선 땅의 현실과 허생의 비범한 인품을 알게 되고, 허생에게 어영청 대장 이완을 소개시켜 북벌론에 관한 이야기를 주선하였는데, 허생이 이완에게 3가지 문제를 내었지만 이완은 3가지 모두 해결할 수 없다고 답하였다. 이에 허생은 이완을 크게 꾸짖으며 칼로 이완을 찔러 죽이려 하자 이완은 허생의 집을 도망쳐 나온다. 그 다음날 이완이 다시 허생의 집을 찾아갔으나 허생은 사라지고 없었다.', '1788-01-01 00:00:00', '201116-2a77db39-1e84-4e42-acca-bd104f533358.jpg', '허생전.jpg', 40042, 1),
@@ -20,13 +38,32 @@ INSERT IGNORE INTO `books` (`id`, `title`, `writer`, `content`, `wdate`, `savefi
 	(11, '사씨남정기', '김만중', '소설은 한림학사 유연수의 처 사씨의 바른 품행과 그녀를 시기하는 악한 첩 교씨가 그녀를 음해하기 위해 꾸미는 악행들, 그리고 소설 끝에 누명을 썼던 사씨가 귀양지에서 돌아오고 악행이 들통난 교씨는 처형당하는 권선징악 구조의 내용을 다루고 있다. 이 내용은 재미를 위해 만들어진 구성이라기보다는 당시 인현왕후를 내쫓고 희빈 장씨를 총애했던 숙종의 잘못을 지적하려는 목적을 가진 것으로 보이며, 궁녀가 이 소설을 숙종에게 읽어 준 뒤 숙종이 인현왕후를 복위하게 했다는 일화가 이를 뒷받침한다. 본래 한글로 지어진 사씨남정기를 김춘택은 한문으로 번역했으며 이를 궁궐에 들어갈 기회가 생기자 궁녀들에게 공짜로 나눠주었다.', '1111-11-11 00:00:00', '201116-44f7e4aa-a85d-4834-a987-27b89a7a4ad7.jpg', '사씨남정기.jpg', 217614, 1);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `expires` int unsigned NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT IGNORE INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-	('vH4pRaiVo_eRmjPcHioAIMRfcoYubgSx', 1605936572, '{"cookie":{"originalMaxAge":null,"expires":null,"secure":false,"httpOnly":true,"path":"/"},"user":{"id":1,"userid":"12345678","username":"이지홍","usermail":"123456@naver.com"}}');
+INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
+	('TM88iQq35NwLDoJdk47gUTxJQtWG0xTA', 1605946579, '{"cookie":{"originalMaxAge":null,"expires":null,"secure":false,"httpOnly":true,"path":"/"}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `userid` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `userpw` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `usermail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `wdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `level` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT IGNORE INTO `users` (`id`, `userid`, `userpw`, `username`, `usermail`, `wdate`, `level`) VALUES
+INSERT INTO `users` (`id`, `userid`, `userpw`, `username`, `usermail`, `wdate`, `level`) VALUES
 	(1, '12345678', '$2b$08$sQtKR1eTc.WCBRipnq4yFOP6ibhfaEj3gOfqcKFZjpjQYcFwXA7lO', '이지홍', '123456@naver.com', '2020-11-20 09:47:58', 1),
 	(2, '123456789', '$2b$08$16z6EjO3aEaWBsgRbiH0zO.v4EXXomwKUgbvZ8WOGv.KezbnOyfaC', '123456789', '123456789@naver.com', '2020-11-20 12:40:33', 1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
