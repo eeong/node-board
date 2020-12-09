@@ -17,7 +17,7 @@ const local = require('./modules/locals');
 
 //서버 실행 
 app.listen(process.env.port, ()=>{
- console.log("Server listen at "+process.env.DB_HOST+process.env.PORT)
+ console.log("Server listen at "+process.env.DB_HOST+":"+process.env.PORT)
 }); 
 
 //초기 설정
