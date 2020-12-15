@@ -27,7 +27,6 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 		 if (v.savefile) v.icon = getExt(v.savefile,'upper');
 		 v.content = txtCut(v.content);
 		}	
-		console.log(r[0])
 		pug = {
 		file: 'book-list',
 		title: '도서 리스트',

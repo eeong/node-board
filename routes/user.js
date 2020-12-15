@@ -6,6 +6,9 @@ const {pool, sqlGen} = require("../modules/mysql-connect");
 const {alert} =require("../modules/util");
 const {isUser, isGuest} = require("../modules/auth-connect");
 
+const passport = require("passport");
+const KakaoStrategy = require('passport-kakao').Strategy
+
 router.get('/join', isGuest , (req,res,next)=>{
 	const pug = {
 		file:'user-join', title: '회원가입',
@@ -13,6 +16,8 @@ router.get('/join', isGuest , (req,res,next)=>{
 	}
 	res.render('user/join' , pug);
 });
+
+
 
 router.post('/save', async (req, res, next) => {
 	try {
@@ -39,6 +44,32 @@ router.get('/login', isGuest, (req, res, next)=>{
 	}
 	res.render('user/login' , pug);
 });
+
+
+/* passport.use(new KakaoStrategy({
+	clientID : process.env.CLIENT_ID,
+	callbackURL : 'http://localhost:3000/user/login/kakao/oauth'
+  },
+  (accessToken, refreshToken, profile, done) => {
+	User.findOrCreate((err, user) => {
+	  if (err) { return done(err) }
+	  return done(null, user)
+	})
+  }
+));
+
+router.get('/login/kakao', (req, res, next) => {
+	passport.authenticate('kakao')	
+});
+
+router.get('/login/kakao/oauth', 
+	passport.authenticate("kakao", { failureRedirect: "/" }),
+	(req, res) => {
+	  res.redirect("/");
+	
+})
+ */
+
 
 router.post('/logon',isGuest, async (req, res, next) => {
 	try {

@@ -10,3 +10,12 @@ function onSubmit(f) {
 		return false;
 	}
 }
+
+Kakao.init('68a825cbbb160e4dfad863afdbc2efd1');
+
+function kakaoLogin(){
+	Kakao.Auth.authorize({
+	redirectUri: 'http://localhost:3000/user/login/kakao/oauth'
+  });
+Kakao.Auth.setAccessToken(USER_ACCESS_TOKEN);
+} 

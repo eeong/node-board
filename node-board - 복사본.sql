@@ -9,7 +9,7 @@ CREATE DATABASE IF NOT EXISTS `eeong` /*!40100 DEFAULT CHARACTER SET utf8mb4 COL
 USE `eeong`;
 
 CREATE TABLE IF NOT EXISTS `books` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NULL AUTO_INCREMENT,
   `title` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `writer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content` text COLLATE utf8mb4_unicode_ci,
