@@ -1,7 +1,7 @@
 const {alert} = require('./util');
 
 const isUser = (req, res, next) =>{
-	if(req.session.user) next();
+	if(req.session.user ) next();
 	else res.send(alert('로그인해주세요','/user/login'));
 }
 

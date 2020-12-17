@@ -46,29 +46,33 @@ router.get('/login', isGuest, (req, res, next)=>{
 });
 
 
-/* passport.use(new KakaoStrategy({
+passport.use(new KakaoStrategy({
 	clientID : process.env.CLIENT_ID,
+	clientSecret : '',
 	callbackURL : 'http://localhost:3000/user/login/kakao/oauth'
   },
-  (accessToken, refreshToken, profile, done) => {
-	User.findOrCreate((err, user) => {
+  (accessToken, refreshToken, profile, done) => {console.log(profile)
+	User.findOrCreate( '', (err, user) => {
+		
 	  if (err) { return done(err) }
 	  return done(null, user)
 	})
   }
 ));
 
-router.get('/login/kakao', (req, res, next) => {
-	passport.authenticate('kakao')	
+router.get('/login/kakao', passport.authenticate('kakao'));
+
+router.get('/login/kakao/oauth', (req, res, next)=> {
+	passport.authenticate("kakao", (err, user) => {
+		console.log(user)
+		if (!user) { return res.redirect('http://127.0.0.1:3000/user/login'); }
+		res.logIn(user, (err) => {
+			console.log('oauth',user);
+			return res.redirect('http://127.0.0.1:3000/');
+		});
+	})(req, res);
 });
 
-router.get('/login/kakao/oauth', 
-	passport.authenticate("kakao", { failureRedirect: "/" }),
-	(req, res) => {
-	  res.redirect("/");
-	
-})
- */
 
 
 router.post('/logon',isGuest, async (req, res, next) => {

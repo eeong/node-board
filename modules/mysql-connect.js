@@ -45,12 +45,12 @@ const sqlGen = async (table, mode, obj) => {
 	}
 		if(where && where.fields && where.op && (where.op.toLowerCase() == 'and' || where.op.toLowerCase() == 'or')){
 			for(let i in where.fields){
-				if(i == 0) query += ` WHERE `;
+				if(i == 0) query += ` WHERE`;
 				else query += ` ${where.op} `;
 					if(where.fields[i][2] && where.fields[i][2].toLowerCase() == 'like')
-					query += ` WHERE ${where.fields[i][0]} LIKE '%${where.fields[i][1]}%'`;
+					query += ` ${where.fields[i][0]} LIKE '%${where.fields[i][1]}%'`;
 					else 
-					query += ` WHERE ${where.fields[i][0]} = '${where.fields[i][1]}'`;
+					query += ` ${where.fields[i][0]} = '${where.fields[i][1]}'`;
 			}
 	}
 
@@ -59,7 +59,7 @@ const sqlGen = async (table, mode, obj) => {
 	if(between.length > 1) query += ` WHERE ${between[0]} BETWEEN ${between[1]} AND ${between[2]}`
 
 	if((mode=='D' || mode == 'U') && query.indexOf('WHERE') == -1 ) throw new Error('수정,삭제는 where 절이 필요함');
-	
+		console.log(query);
 	
 	
 	try{
