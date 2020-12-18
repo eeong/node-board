@@ -59,7 +59,6 @@ const sqlGen = async (table, mode, obj) => {
 	if(between.length > 1) query += ` WHERE ${between[0]} BETWEEN ${between[1]} AND ${between[2]}`
 
 	if((mode=='D' || mode == 'U') && query.indexOf('WHERE') == -1 ) throw new Error('수정,삭제는 where 절이 필요함');
-		console.log(query);
 	
 	
 	try{

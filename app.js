@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const error = require("http-errors");
-
+const passport = require("passport");
 
 //사용자 모듈 불러오기
 const testRouter = require('./routes/test');
@@ -13,7 +13,7 @@ const userRouter = require('./routes/user');
 const session = require('./modules/session-connect');
 const morgan = require('./modules/morgan-connect');
 const local = require('./modules/locals');
-
+const passportModule = require('./passport');
 
 //서버 실행 
 app.listen(process.env.port, ()=>{
@@ -25,13 +25,24 @@ app.set('view engine', 'pug');
 app.set('views', './views');
 
 
+//미들웨어
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(morgan());
 app.use(session());
 app.use(local());
 
-//미들웨어
+passportModule(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+	app.locals.user = req.user ? req.user : {};
+	next();
+});
+
+
+//라우터
 app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/upload', express.static(path.join(__dirname,'./storage')));
 app.use('/test', testRouter);

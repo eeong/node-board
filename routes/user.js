@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 const error = require('http-errors');
 const bcrypt = require('bcrypt');
-const {pool, sqlGen} = require("../modules/mysql-connect");
+const passport = require("passport");
+const {sqlGen} = require("../modules/mysql-connect");
 const {alert} =require("../modules/util");
 const {isUser, isGuest} = require("../modules/auth-connect");
-
-const passport = require("passport");
-const KakaoStrategy = require('passport-kakao').Strategy
 
 router.get('/join', isGuest , (req,res,next)=>{
 	const pug = {
@@ -16,8 +14,6 @@ router.get('/join', isGuest , (req,res,next)=>{
 	}
 	res.render('user/join' , pug);
 });
-
-
 
 router.post('/save', async (req, res, next) => {
 	try {
@@ -45,37 +41,18 @@ router.get('/login', isGuest, (req, res, next)=>{
 	res.render('user/login' , pug);
 });
 
-
-passport.use(new KakaoStrategy({
-	clientID : process.env.CLIENT_ID,
-	clientSecret : '',
-	callbackURL : 'http://localhost:3000/user/login/kakao/oauth'
-  },
-  (accessToken, refreshToken, profile, done) => {console.log(profile)
-	User.findOrCreate( '', (err, user) => {
-		
-	  if (err) { return done(err) }
-	  return done(null, user)
-	})
-  }
-));
-
 router.get('/login/kakao', passport.authenticate('kakao'));
 
-router.get('/login/kakao/oauth', (req, res, next)=> {
-	passport.authenticate("kakao", (err, user) => {
-		console.log(user)
-		if (!user) { return res.redirect('http://127.0.0.1:3000/user/login'); }
-		res.logIn(user, (err) => {
-			console.log('oauth',user);
-			return res.redirect('http://127.0.0.1:3000/');
-		});
-	})(req, res);
+router.get('/login/kakao/oauth', passport.authenticate('kakao', {failureRedirect: '/'}), (req, res, next) => {
+	console.log(req.user);
+	req.login(req.user, (err) => {
+		if(err) next(err);
+		else res.redirect('/');
+	});
 });
 
 
-
-router.post('/logon',isGuest, async (req, res, next) => {
+router.post('/logon', isGuest, async (req, res, next) => {
 	try {
 		let msg = '아이디 또는 패스워드가 올바르지 않습니다'
 		let r = await sqlGen('users','S',{ where:['userid', req.body.userid]});
@@ -105,6 +82,7 @@ router.get('/logout', isUser , (req, res, next) => {
 	req.session.destroy();
 	res.send(alert('로그아웃 되었습니다','/'));
 });
+
 
 router.get('/idcheck/:userid', async (req, res, next) => {
 	let r;
