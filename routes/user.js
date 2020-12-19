@@ -18,7 +18,7 @@ router.get('/join', isGuest , (req,res,next)=>{
 router.post('/save', async (req, res, next) => {
 	try {
 		req.body.userpw = await bcrypt.hash( req.body.userpw + process.env.BCRYPT_SALT , Number(process.env.BCRYPT_ROUND));
-		let r = await sqlGen('users', 'I', {field:['userid','userpw','username','usermail'],
+		let r = await sqlGen('users', 'I', {field:['userid','userpw','username','usermail','api'],
 	data: req.body});
 	if(r[0].affectedRows == 1){
 		res.send(alert('회원가입이 완료되었습니다.','/user/login'));
@@ -26,7 +26,7 @@ router.post('/save', async (req, res, next) => {
 	else {
 		res.send(alert('회원가입이 실패했습니다.','/user/join'));
 	}
-	res.json(r[0]);
+	
 	}
 	catch(err){
 		next(error(500, err.sqlMessage || err));

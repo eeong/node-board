@@ -1,4 +1,4 @@
-//전역변수 모듈 불러오기 
+//전역 모듈 
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -6,14 +6,16 @@ const path = require("path");
 const error = require("http-errors");
 const passport = require("passport");
 
-//사용자 모듈 불러오기
-const testRouter = require('./routes/test');
-const bookRouter = require('./routes/book');
-const userRouter = require('./routes/user');
+//사용자 모듈 
 const session = require('./modules/session-connect');
 const morgan = require('./modules/morgan-connect');
 const local = require('./modules/locals');
 const passportModule = require('./passport');
+
+//사용자 라우터
+const testRouter = require('./routes/test');
+const bookRouter = require('./routes/book');
+const userRouter = require('./routes/user');
 
 //서버 실행 
 app.listen(process.env.port, ()=>{
@@ -23,23 +25,26 @@ app.listen(process.env.port, ()=>{
 //초기 설정
 app.set('view engine', 'pug');
 app.set('views', './views');
-
+app.locals.pretty = true;
+app.locals.headTitle = 'Node.js를 활용한 게시판'
 
 //미들웨어
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
 app.use(morgan());
 app.use(session());
 app.use(local());
 
-passportModule(passport);
+//passport 설정 
+/* passportModule(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
 	app.locals.user = req.user ? req.user : {};
 	next();
-});
+}); */
 
 
 //라우터

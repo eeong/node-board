@@ -5,7 +5,7 @@ const error = require("http-errors");
 const path = require("path");
 const fs = require("fs-extra");
 
-const { pool , sqlGen } = require('../modules/mysql-connect');
+const { sqlGen } = require('../modules/mysql-connect');
 const { alert, getPath, getExt, txtCut } = require("../modules/util");
 const { upload, allowExt, imgExt } = require("../modules/multer");
 const pager = require('../modules/pager-connect');
@@ -13,14 +13,13 @@ const {isUser, isGuest} = require("../modules/auth-connect");
 
 //book render
 router.get(['/','/list','/list/:page'], async (req, res, next) => {
-	// let query = 'SELECT * FROM books ORDER BY id ASC LIMIT 0, 10';
-	let connect, r, pug, totalRecord, maxList, maxPager;
+	let r, pug, totalRecord;
 	let page = req.params.page || 1;
 	req.app.locals.page = page;
 	try {
 		r = await sqlGen('books', 'S', {field: ['count(id)']});
 		totalRecord = r[0][0]['count(id)'];
-		let pagers = pager(page, totalRecord, {maxList: 3, maxPage: 3});
+		let pagers = pager(page, totalRecord, {maxList: 5, maxPage: 3});
 		r = await sqlGen('books', 'S', {limit: [pagers.startIdx, pagers.maxList], order:['id', 'DESC']});
 		for (let v of r[0]){
 		 v.wdate = moment(v.wdate).format('YYYY-MM-DD');
@@ -34,7 +33,7 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 		lists: r[0],
 		...pagers
 		}
-		res.render('book/list',pug);
+		res.render('book/list', pug);
 	}
 
 	catch(err) {
