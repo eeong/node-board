@@ -17,7 +17,8 @@ block content
 						a(href=`/book/view/${v.id}`)= v.title
 					td= v.writer
 					td= v.wdate
-					td.text-left= v.content
+					td.text-left
+						a(href=`/book/view/${v.id}`)= v.content
 						if v.icon 
 							span.icon= v.icon
 					td

@@ -7,20 +7,21 @@ const cb = async (accessToken, refreshToken, profile, done) => {
 		api: profile.provider,
 		userid: profile.id,
 		username: profile.username,
-		email: profile._json.kakao_account.email
+		usermail: profile._json.kakao_account.email
 	};
 	r = await sqlGen('users','S',{ where:{fields:[['api','user.api'],['userid','user.id']] , op:'AND'}}); 
-	if(!r[0]) {
+	if(!r[0][0]) {
 		r = await sqlGen('users', 'I' , {field:['userid','username','usermail','api'], data: user});
 		r = await sqlGen('users','S',{ where:{fields:[['api','user.api'],['userid','user.id']], op:'AND'}});
 	}
-	done(null, r[0]);
+	done(null, r[0][0]);
 }
 
 module.exports = (passport) => {
 	passport.use(new KakaoStrategy({
 		clientID: process.env.CLIENT_ID,
 		clientSecret : '',
-		callbackURL : 'http://localhost:3000/user/login/kakao/oauth'
+		callbackURL : 'http://localhost:3000/user/login/kakao/oauth',
+		session: true
 	}, cb));
 };

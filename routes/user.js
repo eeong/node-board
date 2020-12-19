@@ -38,6 +38,7 @@ router.get('/login', isGuest, (req, res, next)=>{
 		file:'user-login', title: '로그인',
 		titleSub: '로그인하십시오'
 	}
+	req.session.destroy();
 	res.render('user/login' , pug);
 });
 
@@ -53,12 +54,23 @@ router.get('/login/kakao/oauth', passport.authenticate('kakao', {failureRedirect
 
 
 router.post('/logon', isGuest, async (req, res, next) => {
-	try {
-		let msg = '아이디 또는 패스워드가 올바르지 않습니다'
-		let r = await sqlGen('users','S',{ where:['userid', req.body.userid]});
-		if(r[0].length > 0){
+	msg ='잘못된 요청입니다';  
+	const done = (err, user, msg) => {
+		if(err) return next(err);
+		if(!user) return res.send(alert(msg, '/'));
+		else {
+			req.login(user, (err) => {
+				if(err) return next(err);
+				else return res.send(alert('로그인 되었습니다.', '/'));
+			});
+		}
+	}
+	passport.authenticate('local', done)(req, res, next);
+
+		/* try {if(r[0].length > 0){
+			let msg = '아이디 또는 패스워드가 올바르지 않습니다'
+			let r = await sqlGen('users','S',{ where:['userid', req.body.userid]});
 			let compare = await bcrypt.compare(req.body.userpw + process.env.BCRYPT_SALT, r[0][0].userpw);
-			// 세션 처리
 			if(compare) {
 			req.session.user = {
 				id: r[0][0].id,
@@ -71,12 +83,12 @@ router.post('/logon', isGuest, async (req, res, next) => {
 		}
 			else res.send(alert(msg,'/user/login'))
 		}
-		else res.send(alert(msg,'/user/login'));
+		else res.send(alert(msg,'/user/login')); 
 	}
 	catch(err){
 		next(error(500, err.sqlMessage || err));
-	}
-})
+	}*/
+});
 
 router.get('/logout', isUser , (req, res, next) => {
 	req.session.destroy();

@@ -25,8 +25,7 @@ app.listen(process.env.port, ()=>{
 //초기 설정
 app.set('view engine', 'pug');
 app.set('views', './views');
-app.locals.pretty = true;
-app.locals.headTitle = 'Node.js를 활용한 게시판'
+
 
 //미들웨어
 app.use(express.json());
@@ -37,15 +36,14 @@ app.use(session());
 app.use(local());
 
 //passport 설정 
-/* passportModule(passport);
+passportModule(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-	app.locals.user = req.user ? req.user : {};
+	app.locals.user = req.user ? req.user : null;
 	next();
-}); */
-
+}); 
 
 //라우터
 app.use('/', express.static(path.join(__dirname, './public')));
