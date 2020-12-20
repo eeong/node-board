@@ -2,6 +2,7 @@ extends ../layout/lo-default.pug
 block content
 	form(name="bookForm" action=`${book ? '/book/change' : '/book/save'}` method="post" enctype="multipart/form-data")
 		input(type="hidden" name="id" value=`${book && book.id ? book.id : ""}`)
+		input(type="hidden" name="uid" value=`${user && user.id ? user.id : ""}`)
 		table.table.tb-write
 			tbody
 				tr

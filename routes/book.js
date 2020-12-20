@@ -57,15 +57,14 @@ router.get('/write', isUser, (req, res) => {
 
 
 router.get('/write/:id', isUser, async (req, res, next) => {
-	let values,query,r,connect,pug;
+	let r,pug;
 	try{
-			//r = await sqlGen('books', 'S',{ where:['id', req.params.id]});
 			r = await sqlGen('books', 'S',{ 
 				where:{
 					op:'AND', 
 						fields:[
 							['id', req.params.id],
-							['uid', req.session.user.id]
+							['uid', req.session.passport.user]
 						]
 					}
 				});
@@ -85,13 +84,13 @@ router.get('/write/:id', isUser, async (req, res, next) => {
 });
 
 router.post('/save',isUser, upload.single('upfile') , async (req, res, next) => {
-	let r,connect;
+	let r;
 	try{
 		if (req.allow == false) {
 			res.send(alert(`${req.ext}는 업로드 할 수 없는 확장자입니다.`,'/book'));
 		}
 		else {
-			r = await sqlGen('books', 'I', {field:['title', 'writer', 'content', 'wdate'], data: req.body, file: req.file});
+			r = await sqlGen('books', 'I', {field:['title', 'writer', 'content', 'wdate', 'uid'], data: req.body, file: req.file});
 			res.redirect('/book/list');
 		}
 	}
@@ -117,9 +116,10 @@ router.post('/change',isUser, upload.single('upfile'), async (req, res, next) =>
 					op:'AND', 
 						fields:[
 							['id', req.body.id],
-							['uid', req.session.user.id]
+							['uid', req.session.passport.user]
 						]
 					}, field:['savefile']});
+
 				if(r[0][0].savefile) await fs.remove(getPath(r[0][0].savefile));
 			}
 			//query = `UPDATE books SET title=?, writer=?, wdate=?, content=?`;
@@ -142,7 +142,7 @@ router.get('/delete/:id',isUser, async (req, res, next) => {
 			op:'AND', 
 				fields:[
 					['id', req.params.id],
-					['uid', req.session.user.id]
+					['uid', req.session.passport.user]
 				]
 			}
 		});
@@ -153,7 +153,7 @@ router.get('/delete/:id',isUser, async (req, res, next) => {
 			op:'AND', 
 				fields:[
 					['id', req.params.id],
-					['uid', req.session.user.id]
+					['uid',  req.session.passport.user]
 				]
 			}
 		});
@@ -221,7 +221,7 @@ router.get('/remove/:id',isUser, async (req, res, next) => {
 			op:'AND', 
 				fields:[
 					['id', req.params.id],
-					['uid', req.session.user.id]
+					['uid',  req.session.passport.user]
 				]
 			}, field:['savefile']} );
 		let book = r[0][0];
@@ -232,7 +232,7 @@ router.get('/remove/:id',isUser, async (req, res, next) => {
 			op:'AND', 
 				fields:[
 					['id', req.params.id],
-					['uid', req.session.user.id]
+					['uid',  req.session.passport.user]
 				]
 			}, field:['savefile', 'realfile', 'filesize'], data:{savefile:null,reqlfile:null,filesize:null}});
 		res.json({code: 200});

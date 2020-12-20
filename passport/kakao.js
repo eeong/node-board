@@ -9,10 +9,10 @@ const cb = async (accessToken, refreshToken, profile, done) => {
 		username: profile.username,
 		usermail: profile._json.kakao_account.email
 	};
-	r = await sqlGen('users','S',{ where:{fields:[['api','user.api'],['userid','user.id']] , op:'AND'}}); 
+	r = await sqlGen('users','S',{ where:{fields:[['api',user.api],['userid',user.id]] , op:'AND'}}); 
 	if(!r[0][0]) {
 		r = await sqlGen('users', 'I' , {field:['userid','username','usermail','api'], data: user});
-		r = await sqlGen('users','S',{ where:{fields:[['api','user.api'],['userid','user.id']], op:'AND'}});
+		r = await sqlGen('users','S',{ where:{fields:[['api',user.api],['userid',user.id]], op:'AND'}});
 	}
 	done(null, r[0][0]);
 }
