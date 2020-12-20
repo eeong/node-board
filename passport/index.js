@@ -18,6 +18,7 @@ module.exports = (passport) => {
 			done(err);
 		}
 	});	
+
 	local(passport);
 	kakao(passport);
 }

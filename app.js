@@ -18,8 +18,8 @@ const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
 
 //서버 실행 
-app.listen(process.env.port, ()=>{
- console.log("Server listen at http://127.0.0.1:"+process.env.PORT)
+app.listen(process.env.PORT, ()=>{
+ console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
 }); 
 
 //초기 설정
