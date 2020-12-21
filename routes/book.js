@@ -176,9 +176,17 @@ router.get('/view/:id', async (req, res, next) => {
 		totalRecord = r[0][0]['count(id)'];
 		// query = `SELECT * FROM books WHERE id= ${req.params.id}`;
 		r = await sqlGen('books','S', {between:['id', Number(req.params.id)-1, Number(req.params.id)+1]});
-		book = r[0][1];
-		if(r[0][2]) book.next =  [r[0][2].title, r[0][2].writer, r[0][2].content] ;
-		if(r[0][0]) book.prev = [r[0][0].title, r[0][0].writer, r[0][0].content] ;
+		console.log(r[0])
+		if(req.params.id > 1){
+			book = r[0][1];
+			if(r[0][2]) book.next = [r[0][2].title, r[0][2].writer, r[0][2].content] ;
+			if(r[0][0]) book.prev = [r[0][0].title, r[0][0].writer, r[0][0].content] ;
+		}
+		else {
+			book = r[0][0];
+			if(r[0][1]) book.next = [r[0][1].title, r[0][1].writer, r[0][1].content] ;
+
+		}
 		book.wdate = moment(book.wdate).format('YYYY-MM-DD');
 		if(book.savefile){
 			book.file = getPath(book.savefile,'rel'); //`/upload/${book.savefile.substr(0, 6)}/${book.savefile}`;
