@@ -13,13 +13,12 @@ const local = require('./modules/locals');
 const passportModule = require('./passport');
 
 //사용자 라우터
-const testRouter = require('./routes/test');
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
 
 //서버 실행 
 app.listen(process.env.PORT, ()=>{
- console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
+	console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
 }); 
 
 //초기 설정
@@ -48,7 +47,6 @@ app.use((req, res, next) => {
 //라우터
 app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/upload', express.static(path.join(__dirname,'./storage')));
-app.use('/test', testRouter);
 app.use('/book', bookRouter);
 app.use('/user', userRouter);
 

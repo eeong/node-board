@@ -254,39 +254,3 @@ router.get('/remove/:id',isUser, async (req, res, next) => {
 
 module.exports = router;
 
-/* app.get('/book/list', (req, res) => {
-	pool.getConnection((err, connect) => {
-		connect.query('SELECT * FROM books', (e, r) => {
-			connect.query('SELECT * FROM books WHERE id = 5', (e, r) => {
-			connect.release();
-			const pug = {
-				css:'book-list',
-				js: 'book-list',
-				title: '도서 리스트',
-				titleSub: '고전도서 리스트',
-				lists: r
-		}
-		})
-			res.render('book/list',pug);
-		});
-	});
-}); */
-
-/* 
-app.get('/book/list', (req, res) => {
-	connection.query('SELECT * FROM books', function(err, r) {
-		// res.json(r);
-		for(let v of r) {
-			v.wdate = moment(v.wdate).format('YYYY-MM-DD');
-		};
-		const pug = {
-			css:'book-list',
-			js: 'book-list',
-			title: '도서 리스트',
-			titleSub: '고전도서 리스트',
-			lists: r
-	}
-	
-		res.render('book/list', pug);
-	});
-}); */

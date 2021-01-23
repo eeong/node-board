@@ -16,7 +16,7 @@
 		filename: (req, file, cb) => {
 			var ext = path.extname(file.originalname);
 			var name = moment().format('YYMMDD') + '-' +uuidv4() + ext;
-		 cb(null, name);
+			cb(null, name);
 		}
 	});
 	
@@ -33,7 +33,7 @@
 			cb(null, false);
 		}
 	}
-	 
+	
 	const upload = multer({ storage, fileFilter, limits: {fileSize: 2048000} });
 
 	module.exports = { upload, imgExt, allowExt};
