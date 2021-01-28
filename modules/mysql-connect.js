@@ -14,7 +14,7 @@ const pool = mysql2.createPool({
 
 const sqlGen = async (table, mode, obj) => {
 	let {field=[], data={}, file=null, where=null, order= [], limit=[], between=[] } = obj;
-	let values=[], query=null, connect=null, r=null;
+	let values=[], query=null, connect=null, r=null , s=null;
 	let temp = Object.entries(data).filter((v) => {
 		return field.includes(v[0]); 
 	});
@@ -26,6 +26,7 @@ const sqlGen = async (table, mode, obj) => {
 	if(mode == 'D') query = `DELETE FROM ${table} `;
 	if(mode == 'S') query = `SELECT ${field.length == 0 ? '*' : field.toString()} FROM ${table} `;
 	
+
 	if(file) {
 		temp.push(['savefile', file.filename]); 
 		temp.push(['realfile', file.originalname]); 
@@ -35,7 +36,9 @@ const sqlGen = async (table, mode, obj) => {
 		query += v[0] + '=?,';
 		values.push(v[1]);
 	}
+
 	query = query.substr(0, query.length - 1);
+
 	if(Array.isArray(where)){
 		if(where[2] && where[2].toLowerCase() == 'like')
 		query += ` WHERE ${where[0]} LIKE '%${where[1]}%'`;
@@ -56,15 +59,25 @@ const sqlGen = async (table, mode, obj) => {
 
 	if(order.length > 1) query += ` ORDER BY ${order[0]} ${order[1]}`;
 	if(limit.length > 1) query += ` LIMIT ${limit[0]}, ${limit[1]}`;
-	if(between.length > 1) query += ` WHERE ${between[0]} BETWEEN ${between[1]} AND ${between[2]}`
+	if(between.length > 1) query += ` WHERE ${between[0]} BETWEEN ${between[1]} AND ${between[2]}`;
 
 	if((mode=='D' || mode == 'U') && query.indexOf('WHERE') == -1 ) throw new Error('수정,삭제는 where 절이 필요함');
 	
-	
 	try{
+		let auto = '';
 		connect = await pool.getConnection();
 		r = await connect.query(query,values);
 		connect.release();
+		if(mode == 'D'){
+			connect = await pool.getConnection();
+			s = await connect.query('SELECT MAX(id) FROM books');
+			const maxId = Object.entries(s[0][0]).filter((v) => {return v !== ''})[0][1] + 1;
+			auto = 'ALTER TABLE books AUTO_INCREMENT='+ maxId+';'
+			connect.release();
+			s = connect = await pool.getConnection();
+			await connect.query(auto);
+			connect.release();
+		}
 		return r;
 	}
 	catch(err){
@@ -73,6 +86,8 @@ const sqlGen = async (table, mode, obj) => {
 	}
 
 }
+
+
 
 
 module.exports = { pool, mysql2, sqlGen };

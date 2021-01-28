@@ -22,9 +22,9 @@ router.get(['/','/list','/list/:page'], async (req, res, next) => {
 		let pagers = pager(page, totalRecord, {maxList: 5, maxPage: 3});
 		r = await sqlGen('books', 'S', {limit: [pagers.startIdx, pagers.maxList], order:['id', 'DESC']});
 		for (let v of r[0]){
-		 v.wdate = moment(v.wdate).format('YYYY-MM-DD');
-		 if (v.savefile) v.icon = getExt(v.savefile,'upper');
-		 v.content = txtCut(v.content);
+		v.wdate = moment(v.wdate).format('YYYY-MM-DD');
+		if (v.savefile) v.icon = getExt(v.savefile,'upper');
+		v.content = txtCut(v.content);
 		}	
 		pug = {
 		file: 'book-list',
@@ -68,7 +68,7 @@ router.get('/write/:id', isUser, async (req, res, next) => {
 						]
 					}
 				});
-		 	r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
+			r[0][0].wdate = moment(r[0][0].wdate).format('YYYY-MM-DD');
 			pug = {
 			file:'book-update',
 			title: '도서 수정',
@@ -86,16 +86,20 @@ router.get('/write/:id', isUser, async (req, res, next) => {
 router.post('/save',isUser, upload.single('upfile') , async (req, res, next) => {
 	let r;
 	try{
+		let q = Object.entries(req.body).filter( (v) => {return v[0] =='wdate'})[0][1];
 		if (req.allow == false) {
 			res.send(alert(`${req.ext}는 업로드 할 수 없는 확장자입니다.`,'/book'));
 		}
-		else {
-			r = await sqlGen('books', 'I', {field:['title', 'writer', 'content', 'wdate', 'uid'], data: req.body, file: req.file});
+		else if(q != '') {
+			r = await sqlGen('books', 'I', {field: ['title', 'writer', 'content', 'wdate', 'uid'], data: req.body, file: req.file});
 			res.redirect('/book/list');
+		}
+		else {
+			res.send(alert('도서의 발행일을 입력해주세요','/book/write'));
 		}
 	}
 	catch(err){
-		next(error(500,err.sqlMessage || err));
+		next(error(500, err.sqlMessage || err));
 	}
 });
 
@@ -134,7 +138,7 @@ router.post('/change',isUser, upload.single('upfile'), async (req, res, next) =>
 
 
 router.get('/delete/:id',isUser, async (req, res, next) => {
-	let r,connect;
+	let r;
 	try{
 		//query = `SELECT savefile FROM books WHERE id = ${id}`;
 		r = await sqlGen('books', 'S', {
@@ -153,7 +157,7 @@ router.get('/delete/:id',isUser, async (req, res, next) => {
 			op:'AND', 
 				fields:[
 					['id', req.params.id],
-					['uid',  req.session.passport.user]
+					['uid', req.session.passport.user]
 				]
 			}
 		});
@@ -170,7 +174,7 @@ router.post('/multer/save',isUser, upload.single('upfile'), (req, res, next) => 
 });
 
 router.get('/view/:id', async (req, res, next) => {
-	let connect, pug, r, book;
+	let pug, r, book;
 	try{
 		r = await sqlGen('books', 'S', {field: ['count(id)']});
 		totalRecord = r[0][0]['count(id)'];
