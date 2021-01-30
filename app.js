@@ -6,6 +6,21 @@ const path = require("path");
 const error = require("http-errors");
 const passport = require("passport");
 
+const cors = require('cors');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+global.Task = require('./api/models/taskModel');
+
+//MongoDB Set
+
+mongoose.Promise = global.Promise;
+mongoose.set('useFindAndModify', false);
+mongoose.connect(
+  `${process.env.DB}`,
+  { useNewUrlParser: true }
+);
+
 //사용자 모듈 
 const session = require('./modules/session-connect');
 const morgan = require('./modules/morgan-connect');
@@ -15,8 +30,10 @@ const passportModule = require('./passport');
 //사용자 라우터
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user');
+const bserRouter = require('./api/routes/Routes');
 
 //서버 실행 
+
 app.listen(process.env.PORT, ()=>{
 	console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
 }); 
@@ -34,6 +51,10 @@ app.use(morgan());
 app.use(session());
 app.use(local());
 
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 //passport 설정 
 passportModule(passport);
 app.use(passport.initialize());
@@ -49,7 +70,7 @@ app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/upload', express.static(path.join(__dirname,'./storage')));
 app.use('/book', bookRouter);
 app.use('/user', userRouter);
-
+app.use('/bser', bserRouter);
 
 
 //예외처리
