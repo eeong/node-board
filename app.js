@@ -5,14 +5,24 @@ const app = express();
 const path = require("path");
 const error = require("http-errors");
 const passport = require("passport");
+const fs = require("fs");
 
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
 global.Task = require('./api/models/taskModel');
 
-const lex = require('greenlock-express').create({
+const options = { // letsencrypt로 받은 인증서 경로를 입력
+  ca: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
+  };
+  http.createServer(app).listen(3000);
+	https.createServer(options, app).listen(443);
+	
+/* const lex = require('greenlock-express').create({
 	version: 'draft-11', 
 	configDir: '/etc/letsencrypt', 
 	server: 'https://acme-v02.api.letsencrypt.org/directory',
@@ -30,43 +40,43 @@ const lex = require('greenlock-express').create({
 	renewBy: 80 * 24 * 60 * 60 * 1000,
 });
 
-https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443);
-http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
+https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443); */
 
 //MongoDB Set
 
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.connect(
-  `${process.env.DB}`,
+	`${process.env.DB}`,
   { useNewUrlParser: true }
-);
-
-//사용자 모듈 
-const session = require('./modules/session-connect');
-const morgan = require('./modules/morgan-connect');
-const local = require('./modules/locals');
-const passportModule = require('./passport');
-
-//사용자 라우터
-const bookRouter = require('./routes/book');
-const userRouter = require('./routes/user');
-const bserRouter = require('./api/routes/Routes');
-
-//서버 실행 
-
-app.listen(process.env.PORT, ()=>{
-	console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
-}); 
-
-//초기 설정
-app.set('view engine', 'pug');
-app.set('views', './views');
-
-
-//미들웨어
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+	);
+	
+	//사용자 모듈 
+	const session = require('./modules/session-connect');
+	const morgan = require('./modules/morgan-connect');
+	const local = require('./modules/locals');
+	const passportModule = require('./passport');
+	
+	//사용자 라우터
+	const bookRouter = require('./routes/book');
+	const userRouter = require('./routes/user');
+	const bserRouter = require('./api/routes/Routes');
+	
+	//서버 실행 
+	
+	app.listen(process.env.PORT, ()=>{
+		console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
+	}); 
+	http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
+	
+	//초기 설정
+	app.set('view engine', 'pug');
+	app.set('views', './views');
+	
+	
+	//미들웨어
+	app.use(express.json());
+	app.use(express.urlencoded({extended: false}));
 
 app.use(morgan());
 app.use(session());
