@@ -12,6 +12,27 @@ const bodyParser = require('body-parser');
 
 global.Task = require('./api/models/taskModel');
 
+const lex = require('greenlock-express').create({
+	version: 'draft-11', 
+	configDir: '/etc/letsencrypt', 
+	server: 'https://acme-v02.api.letsencrypt.org/directory',
+	approveDomains: (opts, certs, cb) => {
+		if (certs) {
+			opts.domains = ['www.eeong.be', 'eeong.be']; 
+		}
+		else {
+			opts.email = 'discography8@gmail.com';
+			opts.agreeTos = true;
+		}
+		cb(null, { options: opts, certs });
+	},
+	renewWithin: 81 * 24 * 60 * 60 * 1000,
+	renewBy: 80 * 24 * 60 * 60 * 1000,
+});
+
+https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443);
+http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
+
 //MongoDB Set
 
 mongoose.Promise = global.Promise;
