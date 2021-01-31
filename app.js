@@ -15,15 +15,15 @@ const bodyParser = require('body-parser');
 
 global.Task = require('./api/models/taskModel');
 
-/* const options = { // letsencrypt로 받은 인증서 경로를 입력
+const options = { // letsencrypt로 받은 인증서 경로를 입력
   ca: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/fullchain.pem'),
   key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
   };
   http.createServer(app).listen(3000);
 	https.createServer(options, app).listen(443); 
-	*/
-const lex = require('greenlock-express').create({
+	
+const lex = require('greenlock-manage').create({
 	version: 'draft-11', 
 	configDir: '/etc/letsencrypt', 
 	server: 'https://acme-v02.api.letsencrypt.org/directory',
