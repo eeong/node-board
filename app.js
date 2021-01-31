@@ -7,7 +7,7 @@ const error = require("http-errors");
 const passport = require("passport");
 const http = require("http");
 const https = require("https");
-
+const fs = require("fs");
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -23,7 +23,7 @@ const options = { // letsencrypt로 받은 인증서 경로를 입력
   http.createServer(app).listen(3000);
 	https.createServer(options, app).listen(443); 
 	
-const lex = require('greenlock-manage').create({
+/*const lex = require('greenlock-manage').create({
 	version: 'draft-11', 
 	configDir: '/etc/letsencrypt', 
 	server: 'https://acme-v02.api.letsencrypt.org/directory',
@@ -43,7 +43,7 @@ const lex = require('greenlock-manage').create({
 
 https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443); 
 http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
-
+*/
 //MongoDB Set
 
 mongoose.Promise = global.Promise;
