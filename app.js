@@ -21,9 +21,9 @@ global.Task = require('./api/models/taskModel');
   cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
   };
   http.createServer(app).listen(3000);
-	https.createServer(options, app).listen(443); */
-	
- const lex = require('greenlock-express').create({
+	https.createServer(options, app).listen(443); 
+	*/
+const lex = require('greenlock-express').create({
 	version: 'draft-11', 
 	configDir: '/etc/letsencrypt', 
 	server: 'https://acme-v02.api.letsencrypt.org/directory',
@@ -43,6 +43,7 @@ global.Task = require('./api/models/taskModel');
 
 https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443); 
 http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
+
 //MongoDB Set
 
 mongoose.Promise = global.Promise;
@@ -66,7 +67,7 @@ mongoose.connect(
 	//서버 실행 
 	
 	app.listen(process.env.PORT, ()=>{
-		console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
+		console.log("Server listen at "+process.env.PORT)
 	}); 
 	
 	
