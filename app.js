@@ -5,7 +5,6 @@ const app = express();
 const path = require("path");
 const error = require("http-errors");
 const passport = require("passport");
-const fs = require("fs");
 const http = require("http");
 const https = require("https");
 
@@ -16,15 +15,15 @@ const bodyParser = require('body-parser');
 
 global.Task = require('./api/models/taskModel');
 
-const options = { // letsencrypt로 받은 인증서 경로를 입력
+/* const options = { // letsencrypt로 받은 인증서 경로를 입력
   ca: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/fullchain.pem'),
   key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
   };
   http.createServer(app).listen(3000);
-	https.createServer(options, app).listen(443);
+	https.createServer(options, app).listen(443); */
 	
-/* const lex = require('greenlock-express').create({
+ const lex = require('greenlock-express').create({
 	version: 'draft-11', 
 	configDir: '/etc/letsencrypt', 
 	server: 'https://acme-v02.api.letsencrypt.org/directory',
@@ -42,8 +41,8 @@ const options = { // letsencrypt로 받은 인증서 경로를 입력
 	renewBy: 80 * 24 * 60 * 60 * 1000,
 });
 
-https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443); */
-
+https.createServer(lex.httpsOptions, lex.middleware(app)).listen(process.env.SSL_PORT || 443); 
+http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
 //MongoDB Set
 
 mongoose.Promise = global.Promise;
@@ -69,7 +68,7 @@ mongoose.connect(
 	app.listen(process.env.PORT, ()=>{
 		console.log("Server listen at "+process.env.HOST+":"+process.env.PORT)
 	}); 
-	http.createServer(lex.middleware(require('redirect-https')())).listen(process.env.PORT || 80);
+	
 	
 	//초기 설정
 	app.set('view engine', 'pug');
