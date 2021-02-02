@@ -20,7 +20,7 @@ const options = { // letsencrypt로 받은 인증서 경로를 입력
   key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
   };
-  http.createServer(app).listen(3000);
+  http.createServer(app).listen(80);
 	https.createServer(options, app).listen(443); 
 	
 /*const lex = require('greenlock-manage').create({
@@ -66,7 +66,7 @@ mongoose.connect(
 	
 	//서버 실행 
 	
-	app.listen(process.env.PORT, ()=>{
+	app.listen(80, ()=>{
 		console.log("Server listen at "+process.env.PORT)
 	}); 
 	
