@@ -18,7 +18,7 @@ global.Task = require('./api/models/taskModel');
 const options = { // letsencrypt로 받은 인증서 경로를 입력
   ca: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/fullchain.pem'),
   key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
+ // cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
   };
   http.createServer(app).listen(80);
 	https.createServer(options, app).listen(443); 
@@ -64,11 +64,11 @@ mongoose.connect(
 	const userRouter = require('./routes/user');
 	const bserRouter = require('./api/routes/Routes');
 	
-	//서버 실행 
+	/*서버 실행 
 	
 	app.listen(80, ()=>{
 		console.log("Server listen at "+process.env.PORT)
-	}); 
+	});*/ 
 	
 	
 	//초기 설정
