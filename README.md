@@ -1,11 +1,11 @@
 # Node.js, Express를 활용한 게시판 웹 어플리케이션
 
-### [링크](http://3.22.22.117:3000)
+### [링크](https://www.eeong.be)
 
 ## 스택
 
  - 백엔드  
-	- Node.js, Express, passport
+	- Node.js, Express, Nginx
 
  - 데이터베이스  
 	- Mysql
@@ -43,4 +43,10 @@
  
  10. morgan, rotating-file-stream 모듈을 사용하여 로깅처리.
 
- 11. AWS EC2인스턴스에 mariaDB 클라이언트 실행, node 어플리케이션 실행.
+ 11. AWS EC2인스턴스에 mariaDB 설치.
+ 
+ 12. pm2로 Node 어플리케이션 실행.
+
+ 12. letsencrypt에서 인증서 받아와 ssl 인증, https 프로토콜로 접속할 수 있게 한다.
+
+ 13. 내 도메인 접속 시 Nginx 프록시 서버에서 해당 어플리케이션으로 포트 포워딩하여 연결.
