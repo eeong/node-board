@@ -1,0 +1,24 @@
+{
+	"data":[
+	["attackPower", "공격력"],
+	["defense", "방어력"],
+	["maxHp", "최대 체력"],
+	["hpRegenRatio", "체력 재생"],
+	["hpRegen", "체력 재생"],
+	["spRegenRatio", "스테미너 재성"],
+	["spRegen", "스테미너 재성"],
+	["attackSpeedRatio", "공속증가"],
+	["criticalStrikeChance", "치명타 확률"],
+	["criticalStrikeDamage", "치명타 데미지"],
+	["cooldownReduction", "쿨다운 감소"],
+	["lifeSteal", "생명력 흡수"],
+	["moveSpeed", "이동 속도"],
+	["sightRange", "시야 범위"],
+	["attackRange", "공격 범위"],
+	["increaseBasicAttackDamage", "기본공격 증가"],
+	["increaseSkillDamage", "스킬 증폭"],
+	["increaseSkillDamageRatio", "스킬 증폭"],
+	["decreaseRecoveryToBasicAttack", "스킬치유 감소"],
+	["decreaseRecoveryToSkill", "치유 감소"]
+]
+}
