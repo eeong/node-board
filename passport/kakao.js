@@ -23,6 +23,6 @@ module.exports = (passport) => {
 	passport.use(new KakaoStrategy({
 		clientID: process.env.CLIENT_ID,
 		clientSecret : '',
-		callbackURL : 'http://'+process.env.HOST+':'+process.env.PORT+'/user/login/kakao/oauth',
+		callbackURL : 'https://www.eeong.be/user/login/kakao/oauth',
 	}, cb));
 };
