@@ -13,9 +13,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 
-global.Task = require('./api/models/taskModel');
+global.Game = require('./api/models/gameModel');
+global.ItemArmor = require('./api/models/armorModel');
+global.ItemWeapon = require('./api/models/weaponModel');
 
-const options = { // letsencrypt로 받은 인증서 경로를 입력
+const options = { 
   ca: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/fullchain.pem'),
   key: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/www.eeong.be/cert.pem')
@@ -23,9 +25,10 @@ const options = { // letsencrypt로 받은 인증서 경로를 입력
   
 
 // 프로토콜 별  서버 실행  
- 
+
   http.createServer(app).listen(process.env.PORT);
   https.createServer(options, app).listen(process.env.PORT_SSL); 
+	
 	
 //MongoDB Set
 
