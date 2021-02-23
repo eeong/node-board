@@ -16,10 +16,12 @@ const trans = JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/trans.j
 const transStatus = function(stat) {
 	var result=[]
 	for(i in stat){
-		trans.filter((v) => {if(v[0] == i) result.push([v[1], stat[i]])})
+		trans.filter((v) => {
+			if(v[0] == i) result.push([v[1], stat[i]])
+			else if(v[0] == stat[i]) result.push(['무기',v[1]])
+		})
 	}
 	return result;
-	//return stat.filter((v,i)=>{return (i > 7 && v[0] != 'consumable' && v[0] != 'makeMaterial1' && v[0] != 'makeMaterial2') })
 }
 
 const getValidItem = function(item) {
@@ -31,11 +33,11 @@ const getValidItem = function(item) {
 
 
 const getItem = function(ctgr, itemcode) {
-  return getValidItem(ctgr.filter((v)=>{
-    if(v.code == itemcode) return v;
-    else return '';
-  })[0])
+	return  getValidItem(ctgr.filter((v)=>{
+			if(v.code == itemcode) return v;
+			else return '';
+		})[0])
+  
 }
-
 
 module.exports = { weapon,armor,charList,getItem }
