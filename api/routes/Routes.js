@@ -9,6 +9,8 @@ router.get('/search/:user', searchApi.read_user_num);
 
 router.get('/search/:user/:mode', searchApi.read_user_rank);
 
+router.get('/search/rank/:usernum/:mode', searchApi.read_mmr);
+
 router.get('/recs', recBuilder.list_all_recs)
 
 router.post('/recs', recBuilder.create_a_rec)
