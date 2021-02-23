@@ -19,6 +19,26 @@
 	["increaseSkillDamage", "스킬 증폭"],
 	["increaseSkillDamageRatio", "스킬 증폭"],
 	["decreaseRecoveryToBasicAttack", "스킬치유 감소"],
-	["decreaseRecoveryToSkill", "치유 감소"]
+	["decreaseRecoveryToSkill", "치유 감소"],
+	["OneHandSword","한손검"],
+	["TwoHandSword","양손검"],
+	["DualSword","쌍검"],
+	["Hammer","해머"],
+	["Axe","도끼"],
+	["Spear","창"],
+	["Bat","방망이"],
+	["Whip","채찍"],
+	["Glove","글러브"],
+	["Tonfa","톤파"],
+	["HighAngleFire","투척"],
+	["DirectFire","암기"],
+	["Bow","활"],
+	["CrossBow","석궁"],
+	["Pistol","권총"],
+	["AssaultRifle","돌격소총"],
+	["SniperRifle","저격총"],
+	["Nunchaku","쌍절곤"],
+	["Rapier","레이피어"],
+	["Guitar","기타"]
 ]
 }
