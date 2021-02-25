@@ -3,12 +3,11 @@ const qs = require('querystring');
 const { weapon, armor, charList, getItem } = require('../modules/getJson');
 const refreshJson = {"code":429,"type":'refresh'};
 
+const fetchHeaders = {'accept': 'application/json','x-api-key': `${process.env.X_API_KEY}`}
+
 exports.read_rank = async (req, res) => {
   await fetch(`https://open-api.bser.io/v1/rank/top/1/`+req.query.m, {
-    headers: {
-        'accept': 'application/json',
-        'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-    }
+    headers: fetchHeaders
 }).then( async ( response ) => {
   if(response.ok){
     await response.json().then((data) => {
@@ -23,17 +22,11 @@ exports.read_rank = async (req, res) => {
 exports.read_user_num = async (req, res) => {
     let userQ = qs.escape(req.params.user);
     await fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
-    headers: {
-        'accept': 'application/json',
-        'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-    }
+    headers: fetchHeaders
 }).then(async (response) => {
   await response.json().then( (data)=>{
     fetch(`https://open-api.bser.io/v1/user/games/${data.user.userNum}`, {
-    headers: {
-        'accept': 'application/json',
-        'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-    }
+    headers: fetchHeaders
 }).then( async ( response ) => {
   await response.json().then((data)=>{
     for(var i in data.userGames){
@@ -57,17 +50,11 @@ exports.read_user_rank = (req, res) => {
   let userQ = qs.escape(req.params.user);
   let gameMode = req.params.mode
   fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
-  headers: {
-      'accept': 'application/json',
-      'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-  }
+  headers: fetchHeaders
 }).then( (response) => {
   response.json().then((data)=>{
   fetch(`https://open-api.bser.io/v1/rank/${data.user.userNum}/1/${gameMode}`, {
-  headers: {
-      'accept': 'application/json',
-      'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-  }
+  headers: fetchHeaders
 }).then( async ( response ) => {
   await response.json().then((data)=>{
     data.userRank.mode = gameMode;
@@ -82,10 +69,7 @@ exports.read_user_rank = (req, res) => {
 
 exports.read_mmr = (req, res) => {
   fetch(`https://open-api.bser.io/v1/rank/${req.params.usernum}/1/${req.params.mode}`, {
-  headers: {
-      'accept': 'application/json',
-      'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-  }
+  headers: fetchHeaders
 }).then( async ( response ) => {
   await response.json().then((data)=>{
     res.json(data);
