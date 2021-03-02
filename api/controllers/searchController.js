@@ -2,8 +2,11 @@ const fetch = require('node-fetch');
 const qs = require('querystring');
 const { weapon, armor, charList, getItem } = require('../modules/getJson');
 const refreshJson = {"code":429,"type":'refresh'};
-
 const fetchHeaders = {'accept': 'application/json','x-api-key': `${process.env.X_API_KEY}`}
+
+const mongoose = require('mongoose');
+const itemA = mongoose.model('itemArmor')
+const itemW = mongoose.model('itemWeapon')
 
 exports.read_rank = async (req, res) => {
   await fetch(`https://open-api.bser.io/v1/rank/top/1/`+req.query.m, {

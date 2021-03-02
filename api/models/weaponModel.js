@@ -36,7 +36,8 @@ const weaponSchema = new Schema(
       "increaseSkillDamage": { type: Number},
       "increaseSkillDamageRatio": { type: Number},
       "decreaseRecoveryToBasicAttack": { type: Number},
-      "decreaseRecoveryToSkill": { type: Number}
+      "decreaseRecoveryToSkill": { type: Number},
+      "transKr":{ type: Array},
 	},
   { collection: 'itemWeapon' }
 );

@@ -3,6 +3,8 @@ const rec = mongoose.model('game');
 const itemA = mongoose.model('itemArmor')
 const itemW = mongoose.model('itemWeapon')
 
+const { weapon,armor, reverseTrans } = require('../modules/getJson');
+
 exports.read_itemArmor = (req, res) => {
   itemA.find({}, (err, armors) => {
     if (err) res.send(err);
@@ -11,10 +13,26 @@ exports.read_itemArmor = (req, res) => {
 };
 
 exports.read_itemWeapon = (req, res) => {
-  itemW.find({}, (err, weapons) => {
+  var transType = reverseTrans(req.params.type)
+  itemW.find({weaponType: transType[0][0]}, (err, weapons) => {
     if (err) res.send(err);
     res.json(weapons);
-  });
+  }).sort({code:'desc'});
+};
+
+exports.get_item = (req, res) => {
+  if(req.params.type == 'Weapon'){
+    itemW.find({code:req.params.code }, (err, weapons) => {
+      if (err) res.send(err);
+      res.json(weapons[0]);
+    });
+  }
+  else if (req.params.type == 'Armor'){
+    itemA.find({code:req.params.code }, (err, armors) => {
+      if (err) res.send(err);
+      res.json(armors[0]);
+    });
+  }
 };
 
 exports.list_all_recs = (req, res) => {
@@ -50,6 +68,7 @@ exports.update_a_rec = (req, res) => {
     }
   );
 };
+
 
 exports.delete_a_rec = (req, res) => {
   rec.deleteOne({ _id: req.params.recId }, err => {

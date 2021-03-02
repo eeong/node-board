@@ -20,7 +20,7 @@
 	["increaseSkillDamageRatio", "스킬 증폭"],
 	["decreaseRecoveryToBasicAttack", "스킬치유 감소"],
 	["decreaseRecoveryToSkill", "치유 감소"],
-	["OneHandSword","한손검"],
+	["OneHandSword","단검"],
 	["TwoHandSword","양손검"],
 	["DualSword","쌍검"],
 	["Hammer","해머"],

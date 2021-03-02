@@ -39,7 +39,8 @@ const armorSchema = new Schema(
       "increaseSkillDamageRatio": { type: Number},
       "preventSkillDamagedRatio": { type: Number},
       "decreaseRecoveryToBasicAttack": { type: Number},
-      "decreaseRecoveryToSkill": { type: Number}
+      "decreaseRecoveryToSkill": { type: Number},
+      "transKr":{ type: Array},
 	},
   { collection: 'itemArmor' }
 );
