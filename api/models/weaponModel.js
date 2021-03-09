@@ -7,7 +7,6 @@ const weaponSchema = new Schema(
       "code": { type: Number, required: true},
       "name": { type: String},
       "itemType": { type: String},
-      "armorType": { type: String},
       "itemGrade": { type: String},
       "craftAnimTrigger": { type: String},
       "stackable": { type: Number},
@@ -37,7 +36,7 @@ const weaponSchema = new Schema(
       "increaseSkillDamageRatio": { type: Number},
       "decreaseRecoveryToBasicAttack": { type: Number},
       "decreaseRecoveryToSkill": { type: Number},
-      "transKr":{ type: Array},
+      "transKr":{type:Array}
 	},
   { collection: 'itemWeapon' }
 );

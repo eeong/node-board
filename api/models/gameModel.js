@@ -33,7 +33,10 @@ const gameSchema = new Schema(
       type: Date,
       default:Date.now,
     },
-    
+    titleCustom:{
+      type: String,
+      required: false
+    },
     item:[
       
     ]
@@ -47,10 +50,12 @@ function getDate(d){
   let dArray = d.toString().split(' ').slice(1,4);
   return dArray[2]+'-'+month[dArray[0]]+'-'+dArray[1];
 }
+if(!gameSchema.title){
+  gameSchema.virtual('title').get(function(){
+    return getDate(this.date) + ' '+ this.character + ' ' + this.mode;
+  });
+}
 
-gameSchema.virtual('title').get(function(){
-  return getDate(this.date) + ' '+ this.character + ' ' + this.mode;
-});
 
 gameSchema.set('toJSON', {getters:true, virtuals:true});
 

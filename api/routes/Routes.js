@@ -19,7 +19,7 @@ router.get('/recs/armor', recBuilder.read_itemArmor)
 
 router.get('/recs/weapon/:type', recBuilder.read_itemWeapon)
 
-router.get('/recs/getitem/:type/code', recBuilder.get_item)
+router.get('/recs/craftitem/:code1/:code2', recBuilder.craft_item)
 
 router.get('/recs/:recId', recBuilder.read_a_rec)
 
