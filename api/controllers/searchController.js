@@ -23,7 +23,7 @@ exports.read_rank = async (req, res) => {
 };
 
 exports.read_user_num = async (req, res) => {
-    let userQ = qs.escape(req.params.user);
+    let userQ = qs.escape((req.params.user).trim());
     await fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
     headers: fetchHeaders
 }).then(async (response) => {
