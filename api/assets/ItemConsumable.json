@@ -12,11 +12,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 250
+      "spRecover": 250,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301102,
@@ -28,11 +31,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 100
+      "spRecover": 225,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301103,
@@ -44,11 +50,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 200
+      "spRecover": 200,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301104,
@@ -60,11 +69,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 450
+      "spRecover": 450,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301106,
@@ -76,11 +88,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 380
+      "spRecover": 380,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301107,
@@ -92,11 +107,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 380
+      "spRecover": 380,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301108,
@@ -108,11 +126,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 200
+      "spRecover": 200,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301201,
@@ -124,11 +145,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301102,
       "makeMaterial2": 401107,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 200
+      "spRecover": 350,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301202,
@@ -139,12 +163,15 @@
       "itemGrade": "Uncommon",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 4,
+      "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301107,
       "makeMaterial2": 302105,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 300
+      "spRecover": 450,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301203,
@@ -156,11 +183,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301102,
       "makeMaterial2": 112104,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 380
+      "spRecover": 380,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301204,
@@ -172,11 +202,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401111,
-      "makeMaterial2": 401107,
+      "makeMaterial2": 112104,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1000
+      "spRecover": 1000,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301205,
@@ -188,11 +221,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401111,
       "makeMaterial2": 301102,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 350
+      "spRecover": 400,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301206,
@@ -204,15 +240,18 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301103,
       "makeMaterial2": 301106,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 500
+      "spRecover": 550,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301207,
-      "name": "스크류드라이버",
+      "name": "칵테일",
       "itemType": "Consume",
       "consumableType": "Beverage",
       "consumableTag": "Alcohol",
@@ -220,11 +259,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 4,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301104,
       "makeMaterial2": 302105,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 300
+      "spRecover": 350,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301208,
@@ -236,11 +278,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301106,
       "makeMaterial2": 401111,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301209,
@@ -252,11 +297,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301107,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 400
+      "spRecover": 400,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301210,
@@ -268,11 +316,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301108,
       "makeMaterial2": 301106,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301211,
@@ -284,11 +335,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301108,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301213,
@@ -300,11 +354,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301104,
       "makeMaterial2": 301107,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301214,
@@ -316,11 +373,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302119,
       "makeMaterial2": 301108,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 400
+      "spRecover": 450,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301215,
@@ -332,11 +392,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301101,
       "makeMaterial2": 301102,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 400
+      "spRecover": 400,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301216,
@@ -348,11 +411,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301103,
       "makeMaterial2": 301102,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 350
+      "spRecover": 350,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301217,
@@ -364,11 +430,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301103,
       "makeMaterial2": 301104,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301218,
@@ -380,11 +449,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301108,
       "makeMaterial2": 301104,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 530
+      "spRecover": 530,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301301,
@@ -396,11 +468,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301204,
       "makeMaterial2": 401107,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1080
+      "spRecover": 800,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301302,
@@ -412,11 +487,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301201,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1080
+      "spRecover": 1080,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301303,
@@ -426,13 +504,16 @@
       "consumableTag": "Alcohol",
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
-      "stackable": 5,
+      "stackable": 6,
       "initialCount": 5,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301204,
       "makeMaterial2": 205102,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 500
+      "spRecover": 750,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301304,
@@ -444,11 +525,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301201,
       "makeMaterial2": 301106,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1080
+      "spRecover": 1080,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301305,
@@ -459,12 +543,15 @@
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 5,
+      "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301204,
       "makeMaterial2": 302116,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 500
+      "spRecover": 1080,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301307,
@@ -476,11 +563,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 5,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301209,
       "makeMaterial2": 301104,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 500
+      "spRecover": 600,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301308,
@@ -492,11 +582,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301201,
       "makeMaterial2": 301103,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1080
+      "spRecover": 1080,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301309,
@@ -508,11 +601,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301209,
       "makeMaterial2": 401120,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 1400
+      "spRecover": 1400,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301310,
@@ -524,11 +620,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 4,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301201,
       "makeMaterial2": 302119,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 450
+      "spRecover": 500,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 301311,
@@ -540,11 +639,33 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 4,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301208,
       "makeMaterial2": 301108,
       "heal": 0,
       "hpRecover": 0,
-      "spRecover": 660
+      "spRecover": 750,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
+    },
+    {
+      "code": 301312,
+      "name": "셀레네의눈물",
+      "itemType": "Consume",
+      "consumableType": "Beverage",
+      "consumableTag": "Alcohol",
+      "itemGrade": "Rare",
+      "craftAnimTrigger": "craftFood",
+      "stackable": 5,
+      "initialCount": 2,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 401301,
+      "makeMaterial2": 301102,
+      "heal": 0,
+      "hpRecover": 0,
+      "spRecover": 1080,
+      "attackPowerByBuff": 10,
+      "defenseByBuff": 0
     },
     {
       "code": 302102,
@@ -556,11 +677,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 130,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302104,
@@ -572,11 +696,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 130,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302105,
@@ -588,11 +715,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 100,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302106,
@@ -604,11 +734,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 200,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302107,
@@ -620,11 +753,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 200,
-      "spRecover": 0
+      "hpRecover": 325,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302109,
@@ -636,11 +772,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 130,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302110,
@@ -652,11 +791,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 225,
-      "spRecover": 0
+      "hpRecover": 325,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302111,
@@ -668,11 +810,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 200,
-      "spRecover": 0
+      "hpRecover": 300,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302112,
@@ -684,11 +829,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
       "hpRecover": 200,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302113,
@@ -700,11 +848,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 200,
-      "spRecover": 0
+      "hpRecover": 275,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302116,
@@ -716,11 +867,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 200,
-      "spRecover": 0
+      "hpRecover": 300,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302119,
@@ -732,11 +886,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 200,
-      "spRecover": 0
+      "hpRecover": 275,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302120,
@@ -748,11 +905,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 250,
-      "spRecover": 0
+      "hpRecover": 200,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302201,
@@ -764,11 +924,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302104,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302204,
@@ -780,11 +943,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302104,
       "makeMaterial2": 401120,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302205,
@@ -796,11 +962,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302110,
       "makeMaterial2": 302106,
       "heal": 0,
       "hpRecover": 500,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302206,
@@ -812,11 +981,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301108,
       "makeMaterial2": 108101,
       "heal": 0,
       "hpRecover": 450,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302207,
@@ -828,11 +1000,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302116,
       "makeMaterial2": 401104,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302209,
@@ -844,11 +1019,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302110,
       "makeMaterial2": 302109,
       "heal": 0,
-      "hpRecover": 400,
-      "spRecover": 0
+      "hpRecover": 450,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302211,
@@ -856,15 +1034,18 @@
       "itemType": "Consume",
       "consumableType": "Food",
       "consumableTag": "None",
-      "itemGrade": "Uncommon",
+      "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 1,
-      "makeMaterial1": 0,
-      "makeMaterial2": 0,
+      "initialCount": 2,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 401304,
+      "makeMaterial2": 301102,
       "heal": 0,
-      "hpRecover": 600,
-      "spRecover": 0
+      "hpRecover": 800,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 10
     },
     {
       "code": 302213,
@@ -876,11 +1057,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
-      "makeMaterial1": 401111,
-      "makeMaterial2": 302107,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 0,
+      "makeMaterial2": 0,
       "heal": 0,
-      "hpRecover": 600,
-      "spRecover": 0
+      "hpRecover": 700,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302216,
@@ -892,11 +1076,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302110,
       "makeMaterial2": 302119,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302217,
@@ -908,11 +1095,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401111,
       "makeMaterial2": 120101,
       "heal": 0,
       "hpRecover": 800,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302218,
@@ -924,11 +1114,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302116,
       "makeMaterial2": 205102,
       "heal": 0,
       "hpRecover": 480,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302222,
@@ -940,11 +1133,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302120,
       "makeMaterial2": 302111,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302224,
@@ -956,11 +1152,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302106,
       "makeMaterial2": 302111,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302225,
@@ -972,11 +1171,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302110,
       "makeMaterial2": 301106,
       "heal": 0,
-      "hpRecover": 600,
-      "spRecover": 0
+      "hpRecover": 700,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302226,
@@ -988,11 +1190,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302111,
       "makeMaterial2": 302110,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302227,
@@ -1004,11 +1209,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302102,
       "makeMaterial2": 302110,
       "heal": 0,
-      "hpRecover": 360,
-      "spRecover": 0
+      "hpRecover": 380,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302228,
@@ -1020,11 +1228,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302102,
       "makeMaterial2": 301108,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302229,
@@ -1036,11 +1247,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
-      "makeMaterial1": 302104,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 302109,
       "makeMaterial2": 302112,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302230,
@@ -1052,11 +1266,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302105,
       "makeMaterial2": 302110,
       "heal": 0,
-      "hpRecover": 360,
-      "spRecover": 0
+      "hpRecover": 325,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302231,
@@ -1068,11 +1285,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302105,
       "makeMaterial2": 302112,
       "heal": 0,
       "hpRecover": 500,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302232,
@@ -1084,11 +1304,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302106,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 480,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302234,
@@ -1100,11 +1323,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302112,
       "makeMaterial2": 302110,
       "heal": 0,
-      "hpRecover": 400,
-      "spRecover": 0
+      "hpRecover": 425,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302235,
@@ -1116,11 +1342,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302112,
       "makeMaterial2": 302119,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302236,
@@ -1132,11 +1361,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301104,
       "makeMaterial2": 302119,
       "heal": 0,
       "hpRecover": 400,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302237,
@@ -1148,11 +1380,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 301103,
       "makeMaterial2": 302119,
       "heal": 0,
       "hpRecover": 550,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302238,
@@ -1164,11 +1399,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302120,
       "makeMaterial2": 302110,
       "heal": 0,
-      "hpRecover": 400,
-      "spRecover": 0
+      "hpRecover": 450,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302301,
@@ -1179,12 +1417,15 @@
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 3,
-      "makeMaterial1": 302109,
+      "initialCount": 2,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 302104,
       "makeMaterial2": 301201,
       "heal": 0,
-      "hpRecover": 450,
-      "spRecover": 0
+      "hpRecover": 550,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302302,
@@ -1196,11 +1437,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302102,
       "makeMaterial2": 401203,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302303,
@@ -1212,11 +1456,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302102,
       "makeMaterial2": 401215,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302304,
@@ -1228,11 +1475,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302109,
       "makeMaterial2": 401215,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302306,
@@ -1244,11 +1494,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302104,
       "makeMaterial2": 401215,
       "heal": 0,
       "hpRecover": 480,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302307,
@@ -1260,11 +1513,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302113,
       "makeMaterial2": 301201,
       "heal": 0,
       "hpRecover": 550,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302308,
@@ -1276,11 +1532,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302110,
       "makeMaterial2": 301208,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302309,
@@ -1292,11 +1551,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302112,
       "makeMaterial2": 401203,
       "heal": 0,
-      "hpRecover": 550,
-      "spRecover": 0
+      "hpRecover": 600,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302311,
@@ -1308,11 +1570,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302119,
       "makeMaterial2": 302206,
       "heal": 0,
       "hpRecover": 733,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302312,
@@ -1324,11 +1589,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302216,
       "makeMaterial2": 205107,
       "heal": 0,
       "hpRecover": 733,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302313,
@@ -1340,11 +1608,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302120,
       "makeMaterial2": 301201,
       "heal": 0,
-      "hpRecover": 520,
-      "spRecover": 0
+      "hpRecover": 550,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302314,
@@ -1356,11 +1627,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302116,
       "makeMaterial2": 301201,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302315,
@@ -1372,11 +1646,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302206,
       "makeMaterial2": 301101,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302316,
@@ -1387,12 +1664,15 @@
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 2,
+      "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302111,
       "makeMaterial2": 401203,
       "heal": 0,
-      "hpRecover": 510,
-      "spRecover": 0
+      "hpRecover": 700,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302317,
@@ -1404,11 +1684,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302218,
       "makeMaterial2": 112104,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302318,
@@ -1420,11 +1703,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302112,
       "makeMaterial2": 301201,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302319,
@@ -1436,11 +1722,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302206,
       "makeMaterial2": 302110,
       "heal": 0,
       "hpRecover": 600,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302322,
@@ -1452,11 +1741,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302120,
       "makeMaterial2": 401203,
       "heal": 0,
-      "hpRecover": 550,
-      "spRecover": 0
+      "hpRecover": 600,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302323,
@@ -1466,13 +1758,16 @@
       "consumableTag": "None",
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
-      "stackable": 5,
+      "stackable": 10,
       "initialCount": 4,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302111,
       "makeMaterial2": 401215,
       "heal": 0,
       "hpRecover": 420,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302324,
@@ -1483,12 +1778,15 @@
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
-      "initialCount": 1,
+      "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302213,
       "makeMaterial2": 203102,
       "heal": 0,
-      "hpRecover": 950,
-      "spRecover": 0
+      "hpRecover": 1000,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302325,
@@ -1500,11 +1798,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302102,
       "makeMaterial2": 302206,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302326,
@@ -1516,11 +1817,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302104,
       "makeMaterial2": 401203,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302327,
@@ -1532,11 +1836,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302113,
       "makeMaterial2": 401203,
       "heal": 0,
-      "hpRecover": 550,
-      "spRecover": 0
+      "hpRecover": 600,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302328,
@@ -1548,11 +1855,14 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302113,
       "makeMaterial2": 301216,
       "heal": 0,
       "hpRecover": 650,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302329,
@@ -1564,11 +1874,33 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302217,
       "makeMaterial2": 302207,
       "heal": 0,
       "hpRecover": 900,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
+    },
+    {
+      "code": 302330,
+      "name": "생일케이크",
+      "itemType": "Consume",
+      "consumableType": "Food",
+      "consumableTag": "None",
+      "itemGrade": "Rare",
+      "craftAnimTrigger": "craftFood",
+      "stackable": 5,
+      "initialCount": 2,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 302230,
+      "makeMaterial2": 302112,
+      "heal": 0,
+      "hpRecover": 650,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302401,
@@ -1578,13 +1910,16 @@
       "consumableTag": "None",
       "itemGrade": "Epic",
       "craftAnimTrigger": "craftFood",
-      "stackable": 5,
+      "stackable": 6,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302326,
       "makeMaterial2": 302302,
       "heal": 0,
       "hpRecover": 920,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     },
     {
       "code": 302402,
@@ -1596,11 +1931,33 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 5,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 302307,
       "makeMaterial2": 302106,
       "heal": 0,
       "hpRecover": 700,
-      "spRecover": 0
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
+    },
+    {
+      "code": 302403,
+      "name": "일레븐 세트",
+      "itemType": "Consume",
+      "consumableType": "Food",
+      "consumableTag": "None",
+      "itemGrade": "Epic",
+      "craftAnimTrigger": "craftFood",
+      "stackable": 6,
+      "initialCount": 2,
+      "exclusiveProducer": 30,
+      "makeMaterial1": 302226,
+      "makeMaterial2": 302302,
+      "heal": 0,
+      "hpRecover": 980,
+      "spRecover": 0,
+      "attackPowerByBuff": 0,
+      "defenseByBuff": 0
     }
   ]
 }

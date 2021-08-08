@@ -11,6 +11,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -23,6 +24,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -35,6 +37,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -47,6 +50,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -59,6 +63,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -71,6 +76,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 2,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -83,6 +89,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -95,6 +102,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -107,6 +115,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -119,6 +128,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -131,6 +141,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -143,6 +154,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -155,6 +167,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -167,6 +180,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -179,6 +193,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -191,6 +206,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -203,6 +219,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -215,6 +232,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -227,6 +245,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -239,6 +258,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -251,6 +271,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401106,
       "makeMaterial2": 401118
     },
@@ -263,6 +284,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401112,
       "makeMaterial2": 203102
     },
@@ -275,6 +297,7 @@
       "craftAnimTrigger": "craftFood",
       "stackable": 3,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401112,
       "makeMaterial2": 401107
     },
@@ -287,6 +310,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 104101,
       "makeMaterial2": 401114
     },
@@ -298,7 +322,8 @@
       "itemGrade": "Uncommon",
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
-      "initialCount": 2,
+      "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401110,
       "makeMaterial2": 301102
     },
@@ -311,6 +336,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 113104,
       "makeMaterial2": 112101
     },
@@ -323,6 +349,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -331,10 +358,11 @@
       "name": "운석",
       "itemType": "Misc",
       "miscItemType": "Material",
-      "itemGrade": "Uncommon",
+      "itemGrade": "Rare",
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -347,6 +375,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401117,
       "makeMaterial2": 401107
     },
@@ -359,6 +388,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401110,
       "makeMaterial2": 502104
     },
@@ -371,6 +401,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 101102,
       "makeMaterial2": 401117
     },
@@ -383,6 +414,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 2,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401106,
       "makeMaterial2": 104101
     },
@@ -395,6 +427,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 105102,
       "makeMaterial2": 401114
     },
@@ -407,6 +440,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 3,
+      "exclusiveProducer": 0,
       "makeMaterial1": 112101,
       "makeMaterial2": 401107
     },
@@ -419,6 +453,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401209,
       "makeMaterial2": 112101
     },
@@ -431,6 +466,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401210,
       "makeMaterial2": 301102
     },
@@ -443,6 +479,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401211,
       "makeMaterial2": 401106
     },
@@ -455,6 +492,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -467,6 +505,7 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 205204,
       "makeMaterial2": 401116
     },
@@ -478,7 +517,8 @@
       "itemGrade": "Rare",
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
-      "initialCount": 2,
+      "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401205,
       "makeMaterial2": 301107
     },
@@ -487,10 +527,11 @@
       "name": "VF혈액샘플",
       "itemType": "Misc",
       "miscItemType": "Material",
-      "itemGrade": "Rare",
+      "itemGrade": "Epic",
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 0,
       "makeMaterial2": 0
     },
@@ -503,8 +544,22 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 205301,
       "makeMaterial2": 401209
+    },
+    {
+      "code": 501101,
+      "name": "DNA 팔찌",
+      "itemType": "DnaBracelet",
+      "miscItemType": "None",
+      "itemGrade": "Common",
+      "craftAnimTrigger": "craftMetal",
+      "stackable": 1,
+      "initialCount": 1,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 0,
+      "makeMaterial2": 0
     },
     {
       "code": 501401,
@@ -515,8 +570,22 @@
       "craftAnimTrigger": "craftMetal",
       "stackable": 3,
       "initialCount": 1,
+      "exclusiveProducer": 0,
       "makeMaterial1": 401212,
       "makeMaterial2": 401211
+    },
+    {
+      "code": 502104,
+      "name": "피아노선",
+      "itemType": "Misc",
+      "miscItemType": "Material",
+      "itemGrade": "Common",
+      "craftAnimTrigger": "craftMetal",
+      "stackable": 3,
+      "initialCount": 1,
+      "exclusiveProducer": 0,
+      "makeMaterial1": 0,
+      "makeMaterial2": 0
     }
   ]
 }
